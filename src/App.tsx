@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-
 import { Editor } from './components/Editor/Editor'
 
 
@@ -13,6 +12,7 @@ function App() {
 
       <Editor />
 
+      <h1 className="text-3xl font-bold underline">    Hello world!  </h1>
 
       <div>
         <a href="https://vite.dev" target="_blank">
