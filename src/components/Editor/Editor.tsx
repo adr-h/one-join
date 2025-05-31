@@ -1,21 +1,25 @@
 import {useRef, useState, useEffect } from 'react';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
-
-import styles from './Editor.module.css';
 import './userWorker';
-
 import { LanguageIdEnum } from 'monaco-sql-languages';
+
+type EditorProps = {
+	initialValue: string;
+	execQuery: (query: string) => Promise<any>;
+}
 
 // Note: does not work correctly with React.StrictMode. will re-render the editor twice, despite the dispose call in useEffect
 // No clue why. This is pretty similar to the example from the official Monaco Editor repo, which also uses StrictMode without issue
 // https://github.com/microsoft/monaco-editor/blob/main/samples/browser-esm-vite-react/src/components/Editor.tsx
-export const Editor = () => {
+export const Editor = ({ execQuery, initialValue }: EditorProps) => {
 	const [editor, setEditor] = useState<monaco.editor.IStandaloneCodeEditor | null>(null);
 	const monacoEl = useRef(null);
 
+	const [queryResult, setQueryResult] = useState<any>(null);
+
 	useEffect(() => {
 		console.log('Editor useEffect called 1');
-		if (monacoEl) {
+		if (monacoEl && !editor) {
 			console.log('Editor useEffect called 2');
 			setEditor((editor) => {
 				if (editor) return editor;
@@ -25,8 +29,8 @@ export const Editor = () => {
 				// https://github.com/DTStack/monaco-sql-languages?tab=readme-ov-file#usage
 
 				return monaco.editor.create(monacoEl.current!, {
-					value: `SELECT * FROM pets;`,
-					language: LanguageIdEnum.PG
+					value: initialValue,
+					language: LanguageIdEnum.PG,
 				});
 			});
 		}
@@ -37,8 +41,30 @@ export const Editor = () => {
 		};
 	}, [monacoEl.current]);
 
-	return <>
-		<button onClick={e => editor?.dispose()}> Delete Editor </button>
-		<div className={styles.Editor} ref={monacoEl}></div>
-	</>;
+	const execQueryHandler = async () => {
+		if (!editor) return;
+
+		const query = editor.getModel()?.getValue() || '';
+		console.log('Exec Query:', query);
+
+		try {
+			const result = await execQuery(query);
+			setQueryResult(result);
+		} catch (error) {
+			setQueryResult(`Error executing query: ${error}`);
+		}
+	}
+
+	return(
+		<div>
+			{/* <button onClick={e => editor?.dispose()}> Delete Editor </button> */}
+			<button onClick={execQueryHandler}> Exec Query </button>
+			<div className="h-[400px] w-full" ref={monacoEl}></div>
+			<pre className="h-[400px] w-full overflow-scroll">
+				<code>
+					{queryResult ? JSON.stringify(queryResult, null, 2) : 'No query result yet.'}
+				</code>
+			</pre>
+		</div>
+	);
 };
