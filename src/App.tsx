@@ -7,7 +7,7 @@ type AppProps = ComponentProps<typeof SetupLesson> & ComponentProps<typeof Inner
 
 function App({ execQuery }: AppProps) {
   return (
-    <div className="flex items-center justify-center flex-col min-h-screen max-w-7xl p-5">
+    <div className="flex items-center justify-center flex-col min-h-screen max-w-7xl p-5 mx-auto">
       <SetupLesson execQuery={execQuery} />
       <InnerJoinLesson  execQuery={execQuery} />
       <OuterJoinLesson execQuery={execQuery} />
