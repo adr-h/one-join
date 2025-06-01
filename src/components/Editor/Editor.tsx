@@ -32,6 +32,7 @@ export const Editor = ({ resetDbState, execQuery, initialValue }: EditorProps) =
 				return monaco.editor.create(monacoEl.current!, {
 					value: initialValue,
 					language: LanguageIdEnum.PG,
+					minimap: { enabled: false }
 				});
 			});
 		}
@@ -66,13 +67,13 @@ export const Editor = ({ resetDbState, execQuery, initialValue }: EditorProps) =
 
 
 	return(
-		<div>
+		<div className="w-full">
 			{/* <button onClick={e => editor?.dispose()}> Delete Editor </button> */}
 			<button className="btn" onClick={execQueryHandler}> Execute Query </button>
 			<button className="btn" onClick={execResetHandler}> Reset Database </button>
 
-			<div className="h-[400px] w-full" ref={monacoEl}></div>
-			<pre className="h-[400px] w-full overflow-scroll">
+			<div className="h-[250px] w-full" ref={monacoEl}></div>
+			<pre className="h-[250px] w-full overflow-scroll">
 				<code>
 					{queryResult ? JSON.stringify(queryResult, null, 2) : 'No query result yet.'}
 				</code>
