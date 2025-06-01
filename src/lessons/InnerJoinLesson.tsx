@@ -1,11 +1,11 @@
+import type { ComponentProps } from "react";
 import { Editor } from "../components/Editor";
 
-type InnerJoinLessonProps = {
-  execQuery: (query: string) => Promise<any>;
-}
+type InnerJoinLessonProps = Omit<
+   ComponentProps<typeof Editor>, 'initialValue'
+>
 
-export function InnerJoinLesson(props: InnerJoinLessonProps) {
-   const { execQuery } = props;
+export function InnerJoinLesson({ execQuery, resetDbState } : InnerJoinLessonProps) {
 
    return (
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
@@ -14,7 +14,7 @@ export function InnerJoinLesson(props: InnerJoinLessonProps) {
             Inner Joins
          </h1>
          <div className="collapse-content text-sm">
-            <Editor execQuery={execQuery} initialValue={''} />
+            <Editor execQuery={execQuery} initialValue={''} resetDbState={resetDbState} />
          </div>
       </div>
    )

@@ -1,11 +1,11 @@
+import type { ComponentProps } from "react";
 import { Editor } from "../components/Editor";
 
-type OuterJoinLessonProps = {
-  execQuery: (query: string) => Promise<any>;
-}
+type OuterJoinLessonProps = Omit<
+   ComponentProps<typeof Editor>, 'initialValue'
+>
 
-export function OuterJoinLesson(props: OuterJoinLessonProps) {
-   const { execQuery } = props;
+export function OuterJoinLesson({ execQuery, resetDbState } : OuterJoinLessonProps) {
 
    return (
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
@@ -14,7 +14,7 @@ export function OuterJoinLesson(props: OuterJoinLessonProps) {
             Outer Joins
          </h1>
          <div className="collapse-content text-sm">
-            <Editor execQuery={execQuery} initialValue={''} />
+            <Editor execQuery={execQuery} resetDbState={resetDbState} initialValue={''} />
          </div>
       </div>
    )

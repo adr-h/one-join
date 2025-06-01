@@ -1,8 +1,22 @@
 import { PGlite } from '@electric-sql/pglite'
+import { INITIAL_MIGRATIONS_AND_SEEDS } from '../../consts/sql';
 
-const db = new PGlite();
-
+let db: PGlite;
 
 export async function getDbConn() {
-   return db
+   if (!db || db?.closed) {
+      db = new PGlite();
+
+      await db.exec(INITIAL_MIGRATIONS_AND_SEEDS)
+   }
+
+   return db;
 };
+
+export async function resetDb() {
+   if (db) {
+      await db.close();
+   }
+
+   await getDbConn();
+}
