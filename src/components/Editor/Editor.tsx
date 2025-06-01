@@ -6,12 +6,13 @@ import { LanguageIdEnum } from 'monaco-sql-languages';
 type EditorProps = {
 	initialValue: string;
 	execQuery: (query: string) => Promise<any>;
+	resetDbState: () => Promise<void>;
 }
 
 // Note: does not work correctly with React.StrictMode. will re-render the editor twice, despite the dispose call in useEffect
 // No clue why. This is pretty similar to the example from the official Monaco Editor repo, which also uses StrictMode without issue
 // https://github.com/microsoft/monaco-editor/blob/main/samples/browser-esm-vite-react/src/components/Editor.tsx
-export const Editor = ({ execQuery, initialValue }: EditorProps) => {
+export const Editor = ({ resetDbState, execQuery, initialValue }: EditorProps) => {
 	const [editor, setEditor] = useState<monaco.editor.IStandaloneCodeEditor | null>(null);
 	const monacoEl = useRef(null);
 
@@ -19,7 +20,7 @@ export const Editor = ({ execQuery, initialValue }: EditorProps) => {
 
 	useEffect(() => {
 		console.log('Editor useEffect called 1');
-		if (monacoEl && !editor) {
+		if (monacoEl) {
 			console.log('Editor useEffect called 2');
 			setEditor((editor) => {
 				if (editor) return editor;
@@ -44,21 +45,32 @@ export const Editor = ({ execQuery, initialValue }: EditorProps) => {
 	const execQueryHandler = async () => {
 		if (!editor) return;
 
-		const query = editor.getModel()?.getValue() || '';
-		console.log('Exec Query:', query);
-
 		try {
+			const query = editor.getModel()?.getValue() || '';
 			const result = await execQuery(query);
+
 			setQueryResult(result);
 		} catch (error) {
 			setQueryResult(`Error executing query: ${error}`);
 		}
 	}
 
+	const execResetHandler = async () => {
+		try {
+			await resetDbState();
+			setQueryResult(`Successfully reset database.`);
+		} catch (error) {
+			setQueryResult(`Error resetting database: ${error}`);
+		}
+	}
+
+
 	return(
 		<div>
 			{/* <button onClick={e => editor?.dispose()}> Delete Editor </button> */}
-			<button onClick={execQueryHandler}> Exec Query </button>
+			<button className="btn" onClick={execQueryHandler}> Execute Query </button>
+			<button className="btn" onClick={execResetHandler}> Reset Database </button>
+
 			<div className="h-[400px] w-full" ref={monacoEl}></div>
 			<pre className="h-[400px] w-full overflow-scroll">
 				<code>

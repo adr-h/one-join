@@ -1,12 +1,12 @@
+import type { ComponentProps } from "react";
 import { Editor } from "../components/Editor";
-import { CREATE_DEFAULT_TABLES } from "../consts/sql";
+import { INITIAL_MIGRATIONS_AND_SEEDS } from "../consts/sql";
 
-type SetupLessonProps = {
-  execQuery: (query: string) => Promise<any>;
-}
+type SetupLessonProps = Omit<
+   ComponentProps<typeof Editor>, 'initialValue'
+>
 
-export function SetupLesson(props: SetupLessonProps) {
-   const { execQuery } = props;
+export function SetupLesson({ execQuery, resetDbState }: SetupLessonProps) {
 
    return (
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
@@ -16,10 +16,13 @@ export function SetupLesson(props: SetupLessonProps) {
          </h1>
          <div className="collapse-content text-sm">
             <div>
-               Needing to run the below code is temporary; in future, the getDbConn method will automatically
-               run initial table migrations + seeding upon first initialisation.
+               Blah blah blah. Maybe just explain the initial tables and their relationships. Maybe use mermaid charts
             </div>
-            <Editor execQuery={execQuery} initialValue={CREATE_DEFAULT_TABLES} />
+            <Editor
+               resetDbState={resetDbState}
+               execQuery={execQuery}
+               initialValue={''}
+            />
          </div>
       </div>
    )

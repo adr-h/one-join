@@ -1,11 +1,11 @@
+import type { ComponentProps } from "react";
 import { Editor } from "../components/Editor";
 
-type FullJoinLessonProps = {
-  execQuery: (query: string) => Promise<any>;
-}
+type FullJoinLessonProps = Omit<
+   ComponentProps<typeof Editor>, 'initialValue'
+>
 
-export function FullJoinLesson(props: FullJoinLessonProps) {
-   const { execQuery } = props;
+export function FullJoinLesson({ execQuery, resetDbState } : FullJoinLessonProps) {
 
    return (
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
@@ -14,7 +14,7 @@ export function FullJoinLesson(props: FullJoinLessonProps) {
             Full Joins
          </h1>
          <div className="collapse-content text-sm">
-            <Editor execQuery={execQuery} initialValue={''} />
+            <Editor execQuery={execQuery} initialValue={''} resetDbState={resetDbState} />
          </div>
       </div>
    )

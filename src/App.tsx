@@ -5,13 +5,13 @@ import { FullJoinLesson, InnerJoinLesson, OuterJoinLesson, SetupLesson } from '.
 type AppProps = ComponentProps<typeof SetupLesson> & ComponentProps<typeof InnerJoinLesson> &
   ComponentProps<typeof OuterJoinLesson> & ComponentProps<typeof FullJoinLesson>;
 
-function App({ execQuery }: AppProps) {
+function App({ execQuery, resetDbState }: AppProps) {
   return (
     <div className="flex items-center justify-center flex-col min-h-screen max-w-7xl p-5 mx-auto">
-      <SetupLesson execQuery={execQuery} />
-      <InnerJoinLesson  execQuery={execQuery} />
-      <OuterJoinLesson execQuery={execQuery} />
-      <FullJoinLesson execQuery={execQuery} />
+      <SetupLesson execQuery={execQuery} resetDbState={resetDbState} />
+      <InnerJoinLesson  execQuery={execQuery} resetDbState={resetDbState} />
+      <OuterJoinLesson execQuery={execQuery} resetDbState={resetDbState} />
+      <FullJoinLesson execQuery={execQuery} resetDbState={resetDbState} />
     </div>
   )
 }

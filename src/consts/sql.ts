@@ -1,5 +1,5 @@
 
-export const CREATE_DEFAULT_TABLES = `
+export const INITIAL_MIGRATIONS_AND_SEEDS = `
   CREATE TABLE IF NOT EXISTS todo (
     id SERIAL PRIMARY KEY,
     task TEXT,
