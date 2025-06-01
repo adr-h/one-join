@@ -12,7 +12,7 @@ export function SetupLesson({ execQuery, resetDbState }: SetupLessonProps) {
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
          <input type="checkbox" />
          <h1 className="collapse-title text-3xl font-bold underline">
-            Setup [Temp]
+            Intro
          </h1>
          <div className="collapse-content text-sm">
             <div>
