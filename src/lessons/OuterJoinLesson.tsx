@@ -18,13 +18,24 @@ export function OuterJoinLesson({ execQuery, resetDbState } : OuterJoinLessonPro
          <div className="collapse-content text-sm">
 
             <article className="prose prose-base">
-               <p>
-                  <code>LEFT JOIN</code> and <code>RIGHT JOIN</code> are 2 types of basic <code>OUTER JOIN</code>s in SQL. An <code>OUTER JOIN</code> is used when you want to include all data from one table, regardless of whether a matching record exists in the other table.
+               <h2> Theory </h2>
+               <p>TODO: Venn diagram</p>
+               <p>TODO: Much, much shorter summary, with the rest going into a collapsed-by-default "Expanded Theory" section?</p>
+               <p>TODO: Maybe the sections can be:
+                  - Venn Diagram
+                  - What & Why (2 paragraph description)
+                  - How (syntax/format)
+                  - Sample scenario
                </p>
-
                <ul>
                   <li>
-                     <code>LEFT JOIN</code> (or <code>LEFT OUTER JOIN</code>) - returns all rows from the <code>left_table</code> (1st table) and matched rows from the <code>right_table</code> (2nd table).
+                     A <code>LEFT JOIN</code> and <code>RIGHT JOIN</code> are 2 types of basic <code>OUTER JOIN</code>s in SQL.
+                  </li>
+                  <li>
+                     An <code>OUTER JOIN</code> is used when you want to include all data from one table, regardless of whether a matching record exists in the other table.
+                  </li>
+                  <li>
+                     A <code>LEFT JOIN</code> (or <code>LEFT OUTER JOIN</code>) returns all rows from the <code>left_table</code> (1st table) and matched rows from the <code>right_table</code> (2nd table).
                      <pre className="block whitespace-pre-wrap overflow-x-scroll">{`
 SELECT [results] from left_table
 LEFT JOIN right_table ON left_table.key = right_table.fkey;
@@ -32,7 +43,7 @@ LEFT JOIN right_table ON left_table.key = right_table.fkey;
                      </pre>
                   </li>
                   <li>
-                     <code>RIGHT JOIN</code> (or <code>RIGHT OUTER JOIN</code>) - returns all rows from the <code>right_table</code>(2nd table) and matched rows from the <code>left_table</code> (1st table).
+                     A <code>RIGHT JOIN</code> (or <code>RIGHT OUTER JOIN</code>) returns all rows from the <code>right_table</code>(2nd table) and matched rows from the <code>left_table</code> (1st table).
                      <pre className="block whitespace-pre-wrap overflow-x-scroll">{`
 SELECT [results] from left_table
 RIGHT JOIN right_table ON left_table.key = right_table.fkey;
@@ -45,8 +56,71 @@ RIGHT JOIN right_table ON left_table.key = right_table.fkey;
                   <span>TIP: generally, you should choose to use <code>LEFT JOIN</code> instead of <code>RIGHT JOIN</code> as much as possible, as it is more commonly used and easier to understand.</span>
                </Tip>
 
+               <hr />
+               <h2> Sample </h2>
                <p>
-                 For instance, you might want to retrieve all <code>candidates</code>, and also optionally include their <code>resumes</code> if they uploaded any. You can do so using a <code>LEFT JOIN</code>:
+                  Consider this scenario:
+                  <ul>
+                     <li>
+                        you have a <code>candidates</code> table
+                        <table className="table table-zebra">
+                           <thead>
+                              <tr>
+                                 <th>id</th>
+                                 <th>name</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td>1</td>
+                                 <td>Alice Smith</td>
+                              </tr>
+                              <tr>
+                                 <td>2</td>
+                                 <td>Bob Johnson</td>
+                              </tr>
+                              <tr>
+                                 <td>3</td>
+                                 <td>Charlie Brown</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </li>
+                     <li>
+                        and a <code>resumes</code> table that stores the resumes of candidates
+                        <table className="table table-zebra">
+                           <thead>
+                              <tr>
+                                 <th>id</th>
+                                 <th>candidate_id</th>
+                                 <th>file_path</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td>1</td>
+                                 <td>1</td>
+                                 <td>alice_resume.pdf</td>
+                              </tr>
+                              <tr>
+                                 <td>2</td>
+                                 <td>2</td>
+                                 <td>bob_resume.pdf</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </li>
+                     <li><code>resumes</code> are optional, so some <code>candidates</code> may not have uploaded a resume yet.</li>
+                  </ul>
+               </p>
+               <p>
+                  If you want to:
+                  <ul>
+                     <li>retrieve a list of <code>candidates</code> names</li>
+                     <li>optionally include the filenames of their <code>resumes</code>  if they uploaded any</li>
+                     <li>return <i>all</i> <code>candidates</code>, even if they are missing <code>resumes</code></li>
+                  </ul>
+                 You can do so using a <code>LEFT JOIN</code>:
                </p>
             </article>
             <Editor execQuery={execQuery} resetDbState={resetDbState} initialValue={LEFT_JOIN_QUERY} />
