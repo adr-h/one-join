@@ -12,6 +12,13 @@ export const INITIAL_MIGRATIONS_AND_SEEDS = `
     email TEXT NOT NULL UNIQUE
   );
 
+  CREATE TABLE IF NOT EXISTS resumes (
+    id SERIAL PRIMARY KEY,
+    candidate_id INTEGER NOT NULL REFERENCES candidates(id) ON DELETE CASCADE,
+    file_path TEXT,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW()
+  );
+
   CREATE TABLE IF NOT EXISTS jobs (
     id SERIAL PRIMARY KEY,
     title TEXT NOT NULL,
@@ -47,6 +54,10 @@ export const INITIAL_MIGRATIONS_AND_SEEDS = `
     (2, 'Bob Johnson', 'bob@mail.com'),
     (3, 'Charlie Brown', 'charlie@mail.com');
 
+  INSERT INTO resumes (id, candidate_id, file_path, created_at) VALUES
+    (1, 1, 'alice_resume.pdf', '2022-10-01 10:00:00'),
+    (2, 2, 'bob_resume.pdf', '2022-10-02 11:00:00');
+
   INSERT INTO jobs (id, title, created_at, employer_id) VALUES
     (1, 'Software Engineer', '2022-10-09 10:00:00', 1),
     (2, 'Data Scientist','2022-10-09 10:00:00', 1),
@@ -68,8 +79,7 @@ export const INITIAL_MIGRATIONS_AND_SEEDS = `
 
   INSERT INTO application_statuses (application_id, status_id, created_at) VALUES
     (1, 1, '2022-11-10 10:00:00'), -- Alice's Software Engineer application: Interview Scheduled
-    (2, 1, '2022-11-10 10:00:00'), -- Bob's Software Engineer application: Interview Scheduled
-    (3, 2, '2022-11-10 10:00:00'); -- Charlie's Data Scientist application: Offer Extended
+    (2, 1, '2022-11-10 10:00:00'); -- Bob's Software Engineer application: Interview Scheduled
 `;
 
 export const INNER_JOIN_QUERY =
@@ -79,3 +89,19 @@ export const INNER_JOIN_QUERY =
 FROM jobs
 INNER JOIN employers ON jobs.employer_id = employers.id
 WHERE employers.name = 'Zeek Ltd';`;
+
+
+export const LEFT_JOIN_QUERY =
+`SELECT
+  candidates.name AS candidate_name,
+  resumes.file_path AS resume_file
+FROM candidates
+LEFT JOIN resumes ON candidates.id = resumes.candidate_id;
+
+-- Can also be done using a RIGHT JOIN, but is more confusing:
+-- SELECT
+--   candidates.name as candidate_name,
+--   resumes.file_path as resume_file
+-- FROM resumes
+-- RIGHT JOIN candidates ON resumes.candidate_id = candidates.id
+`

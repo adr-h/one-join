@@ -20,8 +20,8 @@ export function InnerJoinLesson({ execQuery, resetDbState } : InnerJoinLessonPro
                   An <code>INNER JOIN</code> only returns rows where there is a <b>match in both tables</b>.
                </p>
 
-               <p>
-                  For instance, a basic <code>INNER JOIN</code> might look like this:
+               <div>
+                  The syntax for a basic <code>INNER JOIN</code> might look like this:
                   <pre className="block whitespace-pre-wrap overflow-x-scroll">{`
 SELECT [results] from table_a
 INNER JOIN table_b
@@ -35,7 +35,7 @@ INNER JOIN table_b
                      <li><code>[key]</code> is a key in <code>table_a</code>.</li>
                      <li><code>[foreign_key]</code> is the foreign key in <code>table_b</code> that references <code>table_a</code>.</li>
                   </ul>
-               </p>
+               </div>
 
                <p>
                   For instance, the following query will return all jobs posted by an employer named "Zeek Ltd";
