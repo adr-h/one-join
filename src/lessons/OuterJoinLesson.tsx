@@ -59,33 +59,20 @@ export function OuterJoinLesson({ execQuery, resetDbState } : OuterJoinLessonPro
                   <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">RIGHT OUTER JOIN</text>
                </svg>
 
-
-
-               <p>TODO: Venn diagram</p>
-               <p>TODO: Much, much shorter summary, with the rest going into a collapsed-by-default "Expanded Theory" section?</p>
-               <p>TODO: Maybe the sections can be:
-                  - Venn Diagram
-                  - What & Why (2 paragraph description)
-                  - How (syntax/format)
-                  - Sample scenario
-               </p>
                <ul>
+                  <li>A <code>LEFT JOIN</code> and <code>RIGHT JOIN</code> are two types of <code>OUTER JOIN</code>s</li>
+                  <li>An <code>OUTER JOIN</code> includes all data from one table, regardless of whether a matching record exists in the other table.</li>
                   <li>
-                     A <code>LEFT JOIN</code> and <code>RIGHT JOIN</code> are 2 types of basic <code>OUTER JOIN</code>s in SQL.
-                  </li>
-                  <li>
-                     An <code>OUTER JOIN</code> is used when you want to include all data from one table, regardless of whether a matching record exists in the other table.
-                  </li>
-                  <li>
-                     A <code>LEFT JOIN</code> (or <code>LEFT OUTER JOIN</code>) returns all rows from the <code>left_table</code> (1st table) and matched rows from the <code>right_table</code> (2nd table).
+                     A <code>LEFT JOIN</code> (or <code>LEFT OUTER JOIN</code>) returns all rows from the <code>left_table</code> (1st table) and matched rows (if any) from the <code>right_table</code> (2nd table).
                      <pre className="block whitespace-pre-wrap overflow-x-scroll">{`
 SELECT [results] from left_table
 LEFT JOIN right_table ON left_table.key = right_table.fkey;
                   `}
                      </pre>
                   </li>
+
                   <li>
-                     A <code>RIGHT JOIN</code> (or <code>RIGHT OUTER JOIN</code>) returns all rows from the <code>right_table</code>(2nd table) and matched rows from the <code>left_table</code> (1st table).
+                     A <code>RIGHT JOIN</code> (or <code>RIGHT OUTER JOIN</code>) returns all rows from the <code>right_table</code>(2nd table) and matched rows (if any) from the <code>left_table</code> (1st table).
                      <pre className="block whitespace-pre-wrap overflow-x-scroll">{`
 SELECT [results] from left_table
 RIGHT JOIN right_table ON left_table.key = right_table.fkey;
@@ -95,7 +82,7 @@ RIGHT JOIN right_table ON left_table.key = right_table.fkey;
                </ul>
 
                <Tip>
-                  <span>TIP: generally, you should choose to use <code>LEFT JOIN</code> instead of <code>RIGHT JOIN</code> as much as possible, as it is more commonly used and easier to understand.</span>
+                  <span>TIP: you should choose to use <code>LEFT JOIN</code> instead of <code>RIGHT JOIN</code> as much as possible, as it is more commonly used and easier to understand.</span>
                </Tip>
 
                <hr />
