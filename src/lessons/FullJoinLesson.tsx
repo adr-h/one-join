@@ -9,7 +9,7 @@ export function FullJoinLesson({ execQuery, resetDbState } : FullJoinLessonProps
 
    return (
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
-         <input type="checkbox" />
+         <input type="radio" name="lesson" />
          <h1 className="collapse-title text-3xl font-bold underline">
             Full Joins
          </h1>
