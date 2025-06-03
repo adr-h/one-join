@@ -20,8 +20,7 @@ export function OuterJoinLesson({ execQuery, resetDbState } : OuterJoinLessonPro
             <article className="prose prose-base">
                <h2> Theory </h2>
 
-
-               <div className="flex flex-row ...">
+               <div className="flex flex-row">
                   <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
                      {/* <!-- White Background --> */}
                      <rect width="100%" height="100%" fill="white" />
@@ -63,10 +62,10 @@ export function OuterJoinLesson({ execQuery, resetDbState } : OuterJoinLessonPro
 
 
                <ul>
-                  <li>A <code>LEFT JOIN</code> and <code>RIGHT JOIN</code> are two types of <code>OUTER JOIN</code>s</li>
+                  <li>A <code>LEFT JOIN</code> and <code>RIGHT JOIN</code> are two types of <code>OUTER JOIN</code></li>
                   <li>An <code>OUTER JOIN</code> includes all data from one table, regardless of whether a matching record exists in the other table.</li>
                   <li>
-                     A <code>LEFT JOIN</code> (or <code>LEFT OUTER JOIN</code>) returns all rows from the <code>left_table</code> (1st table) and matched rows (if any) from the <code>right_table</code> (2nd table).
+                     A <code>LEFT JOIN</code> (or <code>LEFT OUTER JOIN</code>) returns all rows from the <code>left_table</code> (1st table), and any matched rows from the <code>right_table</code> (2nd table).
                      <pre className="block whitespace-pre-wrap overflow-x-scroll">{`
 SELECT left_table.*, right_table.*
 FROM left_table
@@ -76,7 +75,7 @@ LEFT JOIN right_table ON left_table.key = right_table.fkey;
                   </li>
 
                   <li>
-                     A <code>RIGHT JOIN</code> (or <code>RIGHT OUTER JOIN</code>) returns all rows from the <code>right_table</code>(2nd table) and matched rows (if any) from the <code>left_table</code> (1st table).
+                     A <code>RIGHT JOIN</code> (or <code>RIGHT OUTER JOIN</code>) returns all rows from the <code>right_table</code>(2nd table), and any matched rows from the <code>left_table</code> (1st table).
                      <pre className="block whitespace-pre-wrap overflow-x-scroll">{`
 SELECT left_table.*, right_table.*
 FROM left_table
