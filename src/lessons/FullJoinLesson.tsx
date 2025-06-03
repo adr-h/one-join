@@ -14,6 +14,22 @@ export function FullJoinLesson({ execQuery, resetDbState } : FullJoinLessonProps
             Full Joins
          </h1>
          <div className="collapse-content text-sm">
+            <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+               {/* <!-- White background --> */}
+               <rect width="100%" height="100%" fill="white" />
+
+               {/* <!-- Left circle --> */}
+               <circle cx="100" cy="100" r="60" fill="green" fill-opacity="0.4" stroke="black" stroke-width="2" />
+               <text x="60" y="100" font-size="14" text-anchor="middle" fill="black">Left</text>
+
+               {/* <!-- Right circle --> */}
+               <circle cx="180" cy="100" r="60" fill="green" fill-opacity="0.4" stroke="black" stroke-width="2" />
+               <text x="220" y="100" font-size="14" text-anchor="middle" fill="black">Right</text>
+
+               {/* <!-- Annotation --> */}
+               <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">FULL OUTER JOIN</text>
+            </svg>
+
             <Editor execQuery={execQuery} initialValue={''} resetDbState={resetDbState} />
          </div>
       </div>

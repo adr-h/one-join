@@ -19,6 +19,48 @@ export function OuterJoinLesson({ execQuery, resetDbState } : OuterJoinLessonPro
 
             <article className="prose prose-base">
                <h2> Theory </h2>
+
+
+               <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+                  {/* <!-- White Background --> */}
+                  <rect width="100%" height="100%" fill="white" />
+
+                  {/* <!-- Left Circle --> */}
+                  <circle cx="100" cy="100" r="60" fill="green" fill-opacity="0.4" stroke="black" stroke-width="2" />
+                  <text x="60" y="100" font-size="14" text-anchor="middle" fill="black">Left</text>
+
+                  {/* <!-- Right Circle --> */}
+                  <circle cx="180" cy="100" r="60" fill="gray" fill-opacity="0.2" stroke="black" stroke-width="2" />
+                  <text x="220" y="100" font-size="14" text-anchor="middle" fill="black">Right</text>
+
+                  {/* <!-- LEFT OUTER JOIN Highlight (reapply left fill for emphasis) --> */}
+                  <circle cx="100" cy="100" r="60" fill="green" fill-opacity="0.2" stroke="none" />
+
+                  {/* <!-- Annotation --> */}
+                  <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">LEFT OUTER JOIN</text>
+               </svg>
+
+               <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+                  {/* <!-- White Background --> */}
+                  <rect width="100%" height="100%" fill="white" />
+
+                  {/* <!-- Left Circle --> */}
+                  <circle cx="100" cy="100" r="60" fill="gray" fill-opacity="0.2" stroke="black" stroke-width="2" />
+                  <text x="60" y="100" font-size="14" text-anchor="middle" fill="black">Left</text>
+
+                  {/* <!-- Right Circle --> */}
+                  <circle cx="180" cy="100" r="60" fill="green" fill-opacity="0.4" stroke="black" stroke-width="2" />
+                  <text x="220" y="100" font-size="14" text-anchor="middle" fill="black">Right</text>
+
+                  {/* <!-- RIGHT OUTER JOIN Highlight (reapply right fill for emphasis) --> */}
+                  <circle cx="180" cy="100" r="60" fill="green" fill-opacity="0.2" stroke="none" />
+
+                  {/* <!-- Annotation --> */}
+                  <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">RIGHT OUTER JOIN</text>
+               </svg>
+
+
+
                <p>TODO: Venn diagram</p>
                <p>TODO: Much, much shorter summary, with the rest going into a collapsed-by-default "Expanded Theory" section?</p>
                <p>TODO: Maybe the sections can be:

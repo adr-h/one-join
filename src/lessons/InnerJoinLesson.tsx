@@ -16,6 +16,39 @@ export function InnerJoinLesson({ execQuery, resetDbState } : InnerJoinLessonPro
          </h1>
          <div className="collapse-content text-sm">
             <article className="prose prose-base">
+
+              <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+                  {/* <!-- White background --> */}
+                  <rect width="100%" height="100%" fill="white" />
+
+                  {/* <!-- Left circle --> */}
+                  <circle cx="100" cy="100" r="60" fill="gray" fill-opacity="0.2" stroke="black" stroke-width="2" />
+                  <text x="60" y="100" font-size="14" text-anchor="middle" fill="black">Left</text>
+
+                  {/* <!-- Right circle --> */}
+                  <circle cx="180" cy="100" r="60" fill="gray" fill-opacity="0.2" stroke="black" stroke-width="2" />
+                  <text x="220" y="100" font-size="14" text-anchor="middle" fill="black">Right</text>
+
+                  {/* <!-- Intersection lens --> */}
+                  <path
+                     d="
+                        M 140 55.279
+                        A 60 60 0 0 1 140 144.721
+                        A 60 60 0 0 0 140 144.721
+                        A 60 60 0 0 1 140 55.279
+                        Z
+                     "
+                     fill="green"
+                     fill-opacity="0.4"
+                     stroke="none"
+                  />
+
+                  {/* <!-- Annotation --> */}
+                  <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">INNER JOIN</text>
+               </svg>
+
+
+
                <p>
                   An <code>INNER JOIN</code> only returns rows where there is a <b>match in both tables</b>.
                </p>
