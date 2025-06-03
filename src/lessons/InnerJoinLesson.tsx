@@ -25,11 +25,11 @@ export function InnerJoinLesson({ execQuery, resetDbState } : InnerJoinLessonPro
 
                   {/* <!-- Left circle --> */}
                   <circle cx="100" cy="100" r="60" fill="gray" fill-opacity="0.2" stroke="black" stroke-width="2" />
-                  <text x="60" y="100" font-size="14" text-anchor="middle" fill="black">Left</text>
+                  <text x="60" y="100" font-size="14" text-anchor="middle" fill="black">table_a</text>
 
                   {/* <!-- Right circle --> */}
                   <circle cx="180" cy="100" r="60" fill="gray" fill-opacity="0.2" stroke="black" stroke-width="2" />
-                  <text x="220" y="100" font-size="14" text-anchor="middle" fill="black">Right</text>
+                  <text x="220" y="100" font-size="14" text-anchor="middle" fill="black">table_b</text>
 
                   {/* <!-- Intersection lens --> */}
                   <path
@@ -54,22 +54,22 @@ export function InnerJoinLesson({ execQuery, resetDbState } : InnerJoinLessonPro
                   <li>
                      The syntax for a basic <code>INNER JOIN</code> might look like this:
                   <pre className="block whitespace-pre-wrap overflow-x-scroll">{`
-SELECT [results] from table_a
-INNER JOIN table_b
-   ON table_a.[key] = table_b.[foreign_key];
+SELECT table_a.*, table_b.* from table_a
+INNER JOIN table_b ON table_a.key = table_b.fkey;
                   `}</pre>
                   </li>
                </ul>
 
+               <hr />
 
-               <h2> Sample </h2>
+               <h2> Practice </h2>
                <p>
                   Consider the following scenario:
                </p>
 
                <ul>
                   <li>
-                     your system has an <code>employers</code> table
+                     your system has an <code>employers</code> table for employer data
                      <table className="table table-zebra">
                         <thead>
                            <tr>
@@ -117,7 +117,29 @@ INNER JOIN table_b
                      </table>
                   </li>
                   <li>
-                     You want to return a list of all jobs, along with the employers who posted them.
+                     You want to return a list of all jobs, along with the employers who posted them, like this:
+                      <table className="table table-zebra">
+                        <thead>
+                           <tr>
+                              <th>job_title</th>
+                              <th>employer_name</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td>Software Engineer</td>
+                              <td>Zeek Ltd</td>
+                           </tr>
+                           <tr>
+                              <td>Data Scientist</td>
+                              <td>Zeek Ltd</td>
+                           </tr>
+                           <tr>
+                              <td>Project Manager</td>
+                              <td>Zeek Ltd</td>
+                           </tr>
+                        </tbody>
+                     </table>
                   </li>
                </ul>
                <p>

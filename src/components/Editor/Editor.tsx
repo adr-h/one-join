@@ -72,8 +72,8 @@ export const Editor = ({ resetDbState, execQuery, initialValue }: EditorProps) =
 			<button className="btn" onClick={execQueryHandler}> Execute Query </button>
 			<button className="btn" onClick={execResetHandler}> Reset Database </button>
 
-			<div className="h-[250px] w-full" ref={monacoEl}></div>
-			<pre className="h-[250px] w-full overflow-scroll">
+			<div className="h-[250px] w-full max-w-2xl" ref={monacoEl}></div>
+			<pre className="h-[250px] w-full max-w-2xl overflow-scroll">
 				<code>
 					{queryResult ? JSON.stringify(queryResult, null, 2) : 'No query result yet.'}
 				</code>
