@@ -2,10 +2,12 @@ import {useRef, useState, useEffect } from 'react';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import './userWorker';
 import { LanguageIdEnum } from 'monaco-sql-languages';
+import type { Result } from '../../service/database/Result';
+import { ResultTable } from '../ResultTable';
 
 type EditorProps = {
 	initialValue: string;
-	execQuery: (query: string) => Promise<any>;
+	execQuery: (query: string) => Promise<Result<any>>;
 	resetDbState: () => Promise<void>;
 }
 
@@ -16,7 +18,7 @@ export const Editor = ({ resetDbState, execQuery, initialValue }: EditorProps) =
 	const [editor, setEditor] = useState<monaco.editor.IStandaloneCodeEditor | null>(null);
 	const monacoEl = useRef(null);
 
-	const [queryResult, setQueryResult] = useState<any>(null);
+	const [queryResult, setQueryResult] = useState<Result<any>>();
 
 	useEffect(() => {
 		console.log('Editor useEffect called 1');
@@ -48,20 +50,41 @@ export const Editor = ({ resetDbState, execQuery, initialValue }: EditorProps) =
 
 		try {
 			const query = editor.getModel()?.getValue() || '';
+
+			setQueryResult({
+				rows: [ { message: `Executing query ...` } ],
+				fields: [ { name: 'message' } ]
+			});
+
 			const result = await execQuery(query);
 
 			setQueryResult(result);
 		} catch (error) {
-			setQueryResult(`Error executing query: ${error}`);
+			setQueryResult({
+				rows: [ { message: `Error occurred: ${error}` } ],
+				fields: [ { name: 'message' } ]
+			});
 		}
 	}
 
 	const execResetHandler = async () => {
 		try {
+			setQueryResult({
+				rows: [ { message: `Resetting DB ...` } ],
+				fields: [ { name: 'message' } ]
+			});
+
 			await resetDbState();
-			setQueryResult(`Successfully reset database.`);
+
+			setQueryResult({
+				rows: [ { message: `Successfully reset database` } ],
+				fields: [ { name: 'message' } ]
+			});
 		} catch (error) {
-			setQueryResult(`Error resetting database: ${error}`);
+			setQueryResult({
+				rows: [ { message: `Error occurred: ${error}` } ],
+				fields: [ { name: 'message' } ]
+			});
 		}
 	}
 
@@ -69,15 +92,27 @@ export const Editor = ({ resetDbState, execQuery, initialValue }: EditorProps) =
 	return(
 		<div className="w-full">
 			{/* <button onClick={e => editor?.dispose()}> Delete Editor </button> */}
-			<button className="btn" onClick={execQueryHandler}> Execute Query </button>
-			<button className="btn" onClick={execResetHandler}> Reset Database </button>
+			<div className="join">
+				<button className="btn btn-primary rounded-b-none join-item" onClick={execQueryHandler}> Execute Query </button>
+				<button className="btn btn-warning rounded-b-none join-item" onClick={execResetHandler}> Reset Database </button>
+			</div>
+			<div className="h-[250px] w-full max-w-2xl border-4 border-primary" ref={monacoEl}></div>
 
-			<div className="h-[250px] w-full max-w-2xl" ref={monacoEl}></div>
-			<pre className="h-[250px] w-full max-w-2xl overflow-scroll">
-				<code>
-					{queryResult ? JSON.stringify(queryResult, null, 2) : 'No query result yet.'}
-				</code>
-			</pre>
+			<br />
+
+			<ul className="menu bg-success rounded-t-sm">
+				<li className="font-semibold px-3">Results
+					{ queryResult?.rows ? ` (${queryResult?.rows.length})` : '' }
+				</li>
+			</ul>
+			<div className="max-h-[250px] w-full max-w-2xl overflow-scroll border-4 border-success p-3">
+				{
+					queryResult ? <ResultTable
+						rows={queryResult.rows}
+						fields={queryResult.fields}
+					/> : <code> No results yet </code>
+				}
+			</div>
 		</div>
 	);
 };

@@ -25,11 +25,11 @@ export function InnerJoinLesson({ execQuery, resetDbState } : InnerJoinLessonPro
 
                   {/* <!-- Left circle --> */}
                   <circle cx="100" cy="100" r="60" fill="gray" fill-opacity="0.2" stroke="black" stroke-width="2" />
-                  <text x="60" y="100" font-size="14" text-anchor="middle" fill="black">table_a</text>
+                  <text x="60" y="100" font-size="14" text-anchor="middle" fill="black">A</text>
 
                   {/* <!-- Right circle --> */}
                   <circle cx="180" cy="100" r="60" fill="gray" fill-opacity="0.2" stroke="black" stroke-width="2" />
-                  <text x="220" y="100" font-size="14" text-anchor="middle" fill="black">table_b</text>
+                  <text x="220" y="100" font-size="14" text-anchor="middle" fill="black">B</text>
 
                   {/* <!-- Intersection lens --> */}
                   <path
@@ -143,7 +143,7 @@ INNER JOIN table_b ON table_a.key = table_b.fkey;
                   </li>
                </ul>
                <p>
-                  The following query will return all jobs posted by an employer named "Zeek Ltd";
+                  The following query will return every <code>job</code> posted by an <code>employer</code> named "Zeek Ltd";
                </p>
             </article>
             <div className="max-w-3/4">
