@@ -49,14 +49,18 @@ export function InnerJoinLesson({ execQuery, resetDbState } : InnerJoinLessonPro
                   <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">INNER JOIN</text>
                </svg>
 
+               <pre className="block whitespace-pre-wrap overflow-x-scroll">
+                  SELECT table_a.*, table_b.* from table_a
+                  <br />
+                  INNER JOIN table_b ON table_a.key = table_b.fkey;
+               </pre>
+
                <ul>
-                  <li> An <code>INNER JOIN</code> only returns rows where there is a <b>match in both tables</b>.</li>
                   <li>
-                     The syntax for a basic <code>INNER JOIN</code> might look like this:
-                  <pre className="block whitespace-pre-wrap overflow-x-scroll">{`
-SELECT table_a.*, table_b.* from table_a
-INNER JOIN table_b ON table_a.key = table_b.fkey;
-                  `}</pre>
+                     An <code>INNER JOIN</code> returns <i>only</i> the <code className="text-green-400">rows that have matching values in both tables</code>.
+                  </li>
+                  <li>
+                     If a row in <code>table_a</code> does not have a corresponding match in <code>table_b</code> (and vice versa), it will be <b className="text-red-400">excluded</b> from the result.
                   </li>
                </ul>
 

@@ -39,17 +39,21 @@ export function RightJoinLesson({ execQuery, resetDbState } : RightJoinLessonPro
                   <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">RIGHT OUTER JOIN</text>
                </svg>
 
+               <pre className="block whitespace-pre-wrap overflow-x-scroll">
+                  SELECT left_table.*, <code className="text-green-400">right_table.*</code>
+                  <br />
+                  FROM left_table
+                  <br />
+                  RIGHT JOIN <code className="text-green-400">right_table</code> ON left_table.fkey = <code className="text-green-400">right_table.key</code>;
+               </pre>
+
                <ul>
                   <li>A <code>RIGHT JOIN</code> (or <code>RIGHT OUTER JOIN</code>) is a type of <code>OUTER JOIN</code></li>
                   <li>
-                     A <code>RIGHT JOIN</code> returns <i>all rows</i> from the <code className="text-green-400">right_table</code>(2nd table), and any <i>matched rows</i> from the <code>left_table</code> (1st table).
-                     <pre className="block whitespace-pre-wrap overflow-x-scroll">
-SELECT left_table.*, <code className="text-green-400">right_table.*</code>
-<br />
-FROM left_table
-<br />
-RIGHT JOIN <code className="text-green-400">right_table</code> ON left_table.fkey = <code className="text-green-400">right_table.key</code>;
-                     </pre>
+                     A <code>RIGHT JOIN</code> returns <i>all rows</i> from the <code className="text-green-400">right_table</code> (the second table), and any <i className="text-green-300">matching rows</i> from the <code>left_table</code> (the first table).
+                  </li>
+                  <li>
+                     If there is no matching row in the <code>left_table</code>, the result will include <code className="text-red-400">NULL</code> values for its columns.
                   </li>
                </ul>
 

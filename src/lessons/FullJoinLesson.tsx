@@ -32,20 +32,21 @@ export function FullJoinLesson({ execQuery, resetDbState } : FullJoinLessonProps
                </svg>
 
                <pre className="block whitespace-pre-wrap overflow-x-scroll">
-                  SELECT <code className="text-green-400">left_table.*</code>, right_table.*
+                  SELECT <code className="text-green-400">left_table.*</code>, <code className="text-green-400">right_table.*</code>
                   <br />
                   FROM <code className="text-green-400">left_table</code>
                   <br />
-                  LEFT JOIN right_table ON <code className="text-green-400">left_table.key</code> = right_table.fkey;
+                  FULL JOIN right_table ON <code className="text-green-400">left_table.key</code> = <code className="text-green-400">right_table.fkey</code>;
                </pre>
 
                <ul>
                   <li>A <code>FULL JOIN</code> (or <code>FULL OUTER JOIN</code>) is a type of <code>OUTER JOIN</code></li>
                   <li>
-                     A <code>FULL JOIN</code> returns <i>all rows</i> from <code className="text-green-400">both tables</code>, regardless of whether there is a match.
+                     A <code>FULL JOIN</code> returns all rows from <code className="text-green-400">both tables</code>, including those that do not have matching rows in the other table.
                   </li>
-                  <li>When a row is missing from either table, it will return <code className="text-red-400">NULL</code> instead</li>
-
+                  <li>
+                     For rows with no match in one of the tables, the result will contain <code className="text-red-400">NULL</code> values for the columns from the unmatched table.
+                  </li>
                </ul>
             </article>
             <SqlRunner execQuery={execQuery} initialValue={''} resetDbState={resetDbState} />

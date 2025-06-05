@@ -1,7 +1,6 @@
 import type { ComponentProps } from "react";
 import { SqlRunner } from "../components/SqlRunner";
 import { LEFT_JOIN_QUERY } from "../consts/sql";
-import { Tip } from "../components/Tip";
 
 type LeftJoinLessonProps = Omit<
    ComponentProps<typeof SqlRunner>, 'initialValue'
@@ -39,18 +38,21 @@ export function LeftJoinLesson({ execQuery, resetDbState } : LeftJoinLessonProps
                   <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">LEFT OUTER JOIN</text>
                </svg>
 
+               <pre className="block whitespace-pre-wrap overflow-x-scroll">
+                  SELECT <code className="text-green-400">left_table.*</code>, right_table.*
+                  <br />
+                  FROM <code className="text-green-400">left_table</code>
+                  <br />
+                  LEFT JOIN right_table ON <code className="text-green-400">left_table.key</code> = right_table.fkey;
+               </pre>
 
                <ul>
                   <li>A <code>LEFT JOIN</code> (or <code>LEFT OUTER JOIN</code>) is a type of <code>OUTER JOIN</code></li>
                   <li>
-                     A <code>LEFT JOIN</code> returns <i>all rows</i> from the <code className="text-green-400">left_table</code> (1st table), and any <i>matched rows</i> from the <code>right_table</code> (2nd table).
-                     <pre className="block whitespace-pre-wrap overflow-x-scroll">
-SELECT <code className="text-green-400">left_table.*</code>, right_table.*
-<br />
-FROM <code className="text-green-400">left_table</code>
-<br />
-LEFT JOIN right_table ON <code className="text-green-400">left_table.key</code> = right_table.fkey;
-                     </pre>
+                     A <code>LEFT JOIN</code> returns <i>all rows</i> from the <code className="text-green-400">left_table</code> (the first table), along with any <i className="text-green-300">matching rows</i> from the <code>right_table</code> (the second table).
+                  </li>
+                  <li>
+                     If there is no matching row in the <code>right_table</code>, the result will include <code className="text-red-400">NULL</code> values for its columns.
                   </li>
                </ul>
 
