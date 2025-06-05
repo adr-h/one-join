@@ -1,8 +1,8 @@
 import type { ComponentProps } from "react";
-import { Editor } from "../components/Editor";
+import { SqlRunner } from "../components/SqlRunner";
 
 type CrossJoinLessonProps = Omit<
-   ComponentProps<typeof Editor>, 'initialValue'
+   ComponentProps<typeof SqlRunner>, 'initialValue'
 >
 
 export function CrossJoinLesson({ execQuery, resetDbState } : CrossJoinLessonProps) {
@@ -15,7 +15,7 @@ export function CrossJoinLesson({ execQuery, resetDbState } : CrossJoinLessonPro
          </h1>
          <div className="collapse-content text-sm">
             Not sure if I should cover Cross Joins since they're rarely used - adding this placeholder anyway just in case I decide to
-            <Editor execQuery={execQuery} initialValue={''} resetDbState={resetDbState} />
+            <SqlRunner execQuery={execQuery} initialValue={''} resetDbState={resetDbState} />
          </div>
       </div>
    )

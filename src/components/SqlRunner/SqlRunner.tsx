@@ -5,16 +5,13 @@ import { LanguageIdEnum } from 'monaco-sql-languages';
 import type { Result } from '../../service/database/Result';
 import { ResultTable } from '../ResultTable';
 
-type EditorProps = {
+type SqlRunnerProps = {
 	initialValue: string;
 	execQuery: (query: string) => Promise<Result<any>>;
 	resetDbState: () => Promise<void>;
 }
 
-// Note: does not work correctly with React.StrictMode. will re-render the editor twice, despite the dispose call in useEffect
-// No clue why. This is pretty similar to the example from the official Monaco Editor repo, which also uses StrictMode without issue
-// https://github.com/microsoft/monaco-editor/blob/main/samples/browser-esm-vite-react/src/components/Editor.tsx
-export const Editor = ({ resetDbState, execQuery, initialValue }: EditorProps) => {
+export const SqlRunner = ({ resetDbState, execQuery, initialValue }: SqlRunnerProps) => {
 	const [editor, setEditor] = useState<monaco.editor.IStandaloneCodeEditor | null>(null);
 	const monacoEl = useRef(null);
 
@@ -91,11 +88,12 @@ export const Editor = ({ resetDbState, execQuery, initialValue }: EditorProps) =
 
 	return(
 		<div className="w-full">
-			{/* <button onClick={e => editor?.dispose()}> Delete Editor </button> */}
 			<div className="join">
 				<button className="btn btn-primary rounded-b-none join-item" onClick={execQueryHandler}> Execute Query </button>
 				<button className="btn btn-warning rounded-b-none join-item" onClick={execResetHandler}> Reset Database </button>
 			</div>
+
+			{/* TODO: move the actual Monaco comp out of here into an Editor component */}
 			<div className="h-[250px] w-full max-w-2xl border-4 border-primary" ref={monacoEl}></div>
 
 			<br />

@@ -1,8 +1,8 @@
 import type { ComponentProps } from "react";
-import { Editor } from "../components/Editor";
+import { SqlRunner } from "../components/SqlRunner";
 
 type LateralJoinLessonProps = Omit<
-   ComponentProps<typeof Editor>, 'initialValue'
+   ComponentProps<typeof SqlRunner>, 'initialValue'
 >
 
 export function LateralJoinLesson({ execQuery, resetDbState } : LateralJoinLessonProps) {
@@ -14,7 +14,7 @@ export function LateralJoinLesson({ execQuery, resetDbState } : LateralJoinLesso
             Lateral Join
          </h1>
          <div className="collapse-content text-sm">
-            <Editor execQuery={execQuery} initialValue={''} resetDbState={resetDbState} />
+            <SqlRunner execQuery={execQuery} initialValue={''} resetDbState={resetDbState} />
          </div>
       </div>
    )
