@@ -5,7 +5,7 @@ type FullJoinLessonProps = Omit<
    ComponentProps<typeof SqlRunner>, 'initialValue'
 >
 
-export function FullJoinLesson({ execQuery, resetDbState } : FullJoinLessonProps) {
+export function FullJoinLesson({ execQuery, resetDbState }: FullJoinLessonProps) {
 
    return (
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
@@ -13,8 +13,8 @@ export function FullJoinLesson({ execQuery, resetDbState } : FullJoinLessonProps
          <h1 className="collapse-title text-3xl font-bold underline">
             Full Join
          </h1>
-         <div className="collapse-content text-sm">
-            <article className="prose prose-base">
+         <div className="collapse-content text-sm gap-8">
+            <div className="flex flex-column gap-8">
                <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
                   {/* <!-- White background --> */}
                   <rect width="100%" height="100%" fill="white" />
@@ -30,25 +30,28 @@ export function FullJoinLesson({ execQuery, resetDbState } : FullJoinLessonProps
                   {/* <!-- Annotation --> */}
                   <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">FULL OUTER JOIN</text>
                </svg>
+               <article className="prose prose-base">
 
-               <pre className="block whitespace-pre-wrap overflow-x-scroll">
-                  SELECT <code className="text-green-400">left_table.*</code>, <code className="text-green-400">right_table.*</code>
-                  <br />
-                  FROM <code className="text-green-400">left_table</code>
-                  <br />
-                  FULL JOIN right_table ON <code className="text-green-400">left_table.key</code> = <code className="text-green-400">right_table.fkey</code>;
-               </pre>
+                  <pre className="block whitespace-pre-wrap overflow-x-scroll">
+                     SELECT <code className="text-green-400">left_table.*</code>, <code className="text-green-400">right_table.*</code>
+                     <br />
+                     FROM <code className="text-green-400">left_table</code>
+                     <br />
+                     FULL JOIN <code className="text-green-400">right_table</code> ON <code className="text-green-400">left_table.key</code> = <code className="text-green-400">right_table.fkey</code>;
+                  </pre>
 
-               <ul>
-                  <li>A <code>FULL JOIN</code> (or <code>FULL OUTER JOIN</code>) is a type of <code>OUTER JOIN</code></li>
-                  <li>
-                     A <code>FULL JOIN</code> returns all rows from <code className="text-green-400">both tables</code>, including those that do not have matching rows in the other table.
-                  </li>
-                  <li>
-                     For rows with no match in one of the tables, the result will contain <code className="text-red-400">NULL</code> values for the columns from the unmatched table.
-                  </li>
-               </ul>
-            </article>
+                  <ul>
+                     <li>A <code>FULL JOIN</code> (or <code>FULL OUTER JOIN</code>) is a type of <code>OUTER JOIN</code></li>
+                     <li>
+                        A <code>FULL JOIN</code> returns all rows from <code className="text-green-400">both tables</code>, including those that do not have matching rows in the other table.
+                     </li>
+                     <li>
+                        For rows with no match in one of the tables, the result will contain <code className="text-red-400">NULL</code> values for the columns from the unmatched table.
+                     </li>
+                  </ul>
+               </article>
+            </div>
+
             <SqlRunner execQuery={execQuery} initialValue={''} resetDbState={resetDbState} />
          </div>
       </div>
