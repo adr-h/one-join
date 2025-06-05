@@ -13,7 +13,7 @@ export function RightJoinLesson({ execQuery, resetDbState } : RightJoinLessonPro
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
          <input type="checkbox" />
          <h1 className="collapse-title text-3xl font-bold underline">
-            Right Joins
+            Right Join
          </h1>
          <div className="collapse-content text-sm">
 
@@ -40,14 +40,15 @@ export function RightJoinLesson({ execQuery, resetDbState } : RightJoinLessonPro
                </svg>
 
                <ul>
-                  <li>A <code>RIGHT JOIN</code> is a type of <code>OUTER JOIN</code></li>
+                  <li>A <code>RIGHT JOIN</code> (or <code>RIGHT OUTER JOIN</code>) is a type of <code>OUTER JOIN</code></li>
                   <li>
-                     A <code>RIGHT JOIN</code> (or <code>RIGHT OUTER JOIN</code>) returns all rows from the <code>right_table</code>(2nd table), and any matched rows from the <code>left_table</code> (1st table).
-                     <pre className="block whitespace-pre-wrap overflow-x-scroll">{`
-SELECT left_table.*, right_table.*
+                     A <code>RIGHT JOIN</code> returns <i>all rows</i> from the <code className="text-green-400">right_table</code>(2nd table), and any <i>matched rows</i> from the <code>left_table</code> (1st table).
+                     <pre className="block whitespace-pre-wrap overflow-x-scroll">
+SELECT left_table.*, <code className="text-green-400">right_table.*</code>
+<br />
 FROM left_table
-RIGHT JOIN right_table ON left_table.key = right_table.fkey;
-                  `}
+<br />
+RIGHT JOIN <code className="text-green-400">right_table</code> ON left_table.fkey = <code className="text-green-400">right_table.key</code>;
                      </pre>
                   </li>
                </ul>

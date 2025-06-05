@@ -12,7 +12,7 @@ export function InnerJoinLesson({ execQuery, resetDbState } : InnerJoinLessonPro
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
          <input type="checkbox" />
          <h1 className="collapse-title text-3xl font-bold underline">
-            Inner Joins
+            Inner Join
          </h1>
          <div className="collapse-content text-sm">
             <article className="prose prose-base">

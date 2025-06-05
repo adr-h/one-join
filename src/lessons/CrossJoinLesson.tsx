@@ -11,7 +11,7 @@ export function CrossJoinLesson({ execQuery, resetDbState } : CrossJoinLessonPro
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
          <input type="checkbox" />
          <h1 className="collapse-title text-3xl font-bold underline">
-            Cross Joins
+            Cross Join
          </h1>
          <div className="collapse-content text-sm">
             Not sure if I should cover Cross Joins since they're rarely used - adding this placeholder anyway just in case I decide to
