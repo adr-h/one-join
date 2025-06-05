@@ -97,11 +97,12 @@ export const LEFT_JOIN_QUERY =
   resumes.file_path AS resume_file
 FROM candidates
 LEFT JOIN resumes ON candidates.id = resumes.candidate_id;
+`;
 
--- Can also be done using a RIGHT JOIN, but is more confusing:
--- SELECT
---   candidates.name as candidate_name,
---   resumes.file_path as resume_file
--- FROM resumes
--- RIGHT JOIN candidates ON resumes.candidate_id = candidates.id
-`
+export const RIGHT_JOIN_QUERY =
+`SELECT
+  candidates.name as candidate_name,
+  resumes.file_path as resume_file
+FROM resumes
+RIGHT JOIN candidates ON resumes.candidate_id = candidates.id
+`;
