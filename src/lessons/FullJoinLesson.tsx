@@ -11,7 +11,7 @@ export function FullJoinLesson({ execQuery, resetDbState } : FullJoinLessonProps
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
          <input type="checkbox" />
          <h1 className="collapse-title text-3xl font-bold underline">
-            Full Joins
+            Full Join
          </h1>
          <div className="collapse-content text-sm">
             <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">

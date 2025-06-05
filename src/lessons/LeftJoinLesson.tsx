@@ -13,44 +13,43 @@ export function LeftJoinLesson({ execQuery, resetDbState } : LeftJoinLessonProps
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
          <input type="checkbox" />
          <h1 className="collapse-title text-3xl font-bold underline">
-            Left Joins
+            Left Join
          </h1>
          <div className="collapse-content text-sm">
 
             <article className="prose prose-base">
                <h2> Theory </h2>
 
-               <div className="flex flex-row">
-                  <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-                     {/* <!-- White Background --> */}
-                     <rect width="100%" height="100%" fill="white" />
+               <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+                  {/* <!-- White Background --> */}
+                  <rect width="100%" height="100%" fill="white" />
 
-                     {/* <!-- Left Circle --> */}
-                     <circle cx="100" cy="100" r="60" fill="green" fill-opacity="0.4" stroke="black" stroke-width="2" />
-                     <text x="60" y="100" font-size="14" text-anchor="middle" fill="black">Left</text>
+                  {/* <!-- Left Circle --> */}
+                  <circle cx="100" cy="100" r="60" fill="green" fill-opacity="0.4" stroke="black" stroke-width="2" />
+                  <text x="60" y="100" font-size="14" text-anchor="middle" fill="black">Left</text>
 
-                     {/* <!-- Right Circle --> */}
-                     <circle cx="180" cy="100" r="60" fill="gray" fill-opacity="0.2" stroke="black" stroke-width="2" />
-                     <text x="220" y="100" font-size="14" text-anchor="middle" fill="black">Right</text>
+                  {/* <!-- Right Circle --> */}
+                  <circle cx="180" cy="100" r="60" fill="gray" fill-opacity="0.2" stroke="black" stroke-width="2" />
+                  <text x="220" y="100" font-size="14" text-anchor="middle" fill="black">Right</text>
 
-                     {/* <!-- LEFT OUTER JOIN Highlight (reapply left fill for emphasis) --> */}
-                     <circle cx="100" cy="100" r="60" fill="green" fill-opacity="0.2" stroke="none" />
+                  {/* <!-- LEFT OUTER JOIN Highlight (reapply left fill for emphasis) --> */}
+                  <circle cx="100" cy="100" r="60" fill="green" fill-opacity="0.2" stroke="none" />
 
-                     {/* <!-- Annotation --> */}
-                     <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">LEFT OUTER JOIN</text>
-                  </svg>
-               </div>
+                  {/* <!-- Annotation --> */}
+                  <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">LEFT OUTER JOIN</text>
+               </svg>
 
 
                <ul>
-                  <li>A <code>LEFT JOIN</code> is a types of <code>OUTER JOIN</code></li>
+                  <li>A <code>LEFT JOIN</code> (or <code>LEFT OUTER JOIN</code>) is a type of <code>OUTER JOIN</code></li>
                   <li>
-                     A <code>LEFT JOIN</code> (or <code>LEFT OUTER JOIN</code>) returns all rows from the <code>left_table</code> (1st table), and any matched rows from the <code>right_table</code> (2nd table).
-                     <pre className="block whitespace-pre-wrap overflow-x-scroll">{`
-SELECT left_table.*, right_table.*
-FROM left_table
-LEFT JOIN right_table ON left_table.key = right_table.fkey;
-                  `}
+                     A <code>LEFT JOIN</code> returns <i>all rows</i> from the <code className="text-green-400">left_table</code> (1st table), and any <i>matched rows</i> from the <code>right_table</code> (2nd table).
+                     <pre className="block whitespace-pre-wrap overflow-x-scroll">
+SELECT <code className="text-green-400">left_table.*</code>, right_table.*
+<br />
+FROM <code className="text-green-400">left_table</code>
+<br />
+LEFT JOIN right_table ON <code className="text-green-400">left_table.key</code> = right_table.fkey;
                      </pre>
                   </li>
                </ul>
