@@ -5,15 +5,12 @@ import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
 import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 
-
 // SQL stuff
 import { LanguageIdEnum } from 'monaco-sql-languages';
 import 'monaco-sql-languages/esm/languages/pgsql/pgsql.contribution';
 import PGSQLWorker from 'monaco-sql-languages/esm/languages/pgsql/pgsql.worker?worker';
 // SQL stuff
 
-
-console.log('worker triggered');
 
 // @ts-ignore
 self.MonacoEnvironment = {

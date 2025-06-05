@@ -1,9 +1,9 @@
 import type { ComponentProps } from "react";
-import { Editor } from "../components/Editor";
+import { SqlRunner } from "../components/SqlRunner";
 import { INITIAL_MIGRATIONS_AND_SEEDS } from "../consts/sql";
 
 type SetupLessonProps = Omit<
-   ComponentProps<typeof Editor>, 'initialValue'
+   ComponentProps<typeof SqlRunner>, 'initialValue'
 >
 
 export function SetupLesson({ execQuery, resetDbState }: SetupLessonProps) {
@@ -18,7 +18,7 @@ export function SetupLesson({ execQuery, resetDbState }: SetupLessonProps) {
             <div>
                Blah blah blah. Maybe just explain the initial tables and their relationships. Maybe use mermaid charts
             </div>
-            <Editor
+            <SqlRunner
                resetDbState={resetDbState}
                execQuery={execQuery}
                initialValue={''}

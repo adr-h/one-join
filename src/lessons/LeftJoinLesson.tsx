@@ -1,10 +1,10 @@
 import type { ComponentProps } from "react";
-import { Editor } from "../components/Editor";
+import { SqlRunner } from "../components/SqlRunner";
 import { LEFT_JOIN_QUERY } from "../consts/sql";
 import { Tip } from "../components/Tip";
 
 type LeftJoinLessonProps = Omit<
-   ComponentProps<typeof Editor>, 'initialValue'
+   ComponentProps<typeof SqlRunner>, 'initialValue'
 >
 
 export function LeftJoinLesson({ execQuery, resetDbState } : LeftJoinLessonProps) {
@@ -142,7 +142,7 @@ LEFT JOIN right_table ON <code className="text-green-400">left_table.key</code> 
                   The following SQL should accomplish the above:
                </p>
             </article>
-            <Editor execQuery={execQuery} resetDbState={resetDbState} initialValue={LEFT_JOIN_QUERY} />
+            <SqlRunner execQuery={execQuery} resetDbState={resetDbState} initialValue={LEFT_JOIN_QUERY} />
          </div>
       </div>
    )

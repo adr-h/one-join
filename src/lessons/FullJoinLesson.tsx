@@ -1,8 +1,8 @@
 import type { ComponentProps } from "react";
-import { Editor } from "../components/Editor";
+import { SqlRunner } from "../components/SqlRunner";
 
 type FullJoinLessonProps = Omit<
-   ComponentProps<typeof Editor>, 'initialValue'
+   ComponentProps<typeof SqlRunner>, 'initialValue'
 >
 
 export function FullJoinLesson({ execQuery, resetDbState } : FullJoinLessonProps) {
@@ -30,7 +30,7 @@ export function FullJoinLesson({ execQuery, resetDbState } : FullJoinLessonProps
                <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">FULL OUTER JOIN</text>
             </svg>
 
-            <Editor execQuery={execQuery} initialValue={''} resetDbState={resetDbState} />
+            <SqlRunner execQuery={execQuery} initialValue={''} resetDbState={resetDbState} />
          </div>
       </div>
    )

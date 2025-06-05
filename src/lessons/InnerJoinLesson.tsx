@@ -1,9 +1,9 @@
 import type { ComponentProps } from "react";
-import { Editor } from "../components/Editor";
+import { SqlRunner } from "../components/SqlRunner";
 import { INNER_JOIN_QUERY } from "../consts/sql";
 
 type InnerJoinLessonProps = Omit<
-   ComponentProps<typeof Editor>, 'initialValue'
+   ComponentProps<typeof SqlRunner>, 'initialValue'
 >
 
 export function InnerJoinLesson({ execQuery, resetDbState } : InnerJoinLessonProps) {
@@ -147,7 +147,7 @@ INNER JOIN table_b ON table_a.key = table_b.fkey;
                </p>
             </article>
             <div className="max-w-3/4">
-               <Editor execQuery={execQuery} initialValue={INNER_JOIN_QUERY} resetDbState={resetDbState} />
+               <SqlRunner execQuery={execQuery} initialValue={INNER_JOIN_QUERY} resetDbState={resetDbState} />
             </div>
          </div>
       </div>
