@@ -6,7 +6,7 @@ type LeftJoinLessonProps = Omit<
    ComponentProps<typeof SqlRunner>, 'initialValue'
 >
 
-export function LeftJoinLesson({ execQuery, resetDbState } : LeftJoinLessonProps) {
+export function LeftJoinLesson({ execQuery, resetDbState }: LeftJoinLessonProps) {
 
    return (
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
@@ -14,11 +14,8 @@ export function LeftJoinLesson({ execQuery, resetDbState } : LeftJoinLessonProps
          <h1 className="collapse-title text-3xl font-bold underline">
             Left Join
          </h1>
-         <div className="collapse-content text-sm">
-
-            <article className="prose prose-base">
-               <h2> Theory </h2>
-
+         <div className="collapse-content text-sm gap-8">
+            <div className="flex flex-column gap-8">
                <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
                   {/* <!-- White Background --> */}
                   <rect width="100%" height="100%" fill="white" />
@@ -37,109 +34,112 @@ export function LeftJoinLesson({ execQuery, resetDbState } : LeftJoinLessonProps
                   {/* <!-- Annotation --> */}
                   <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">LEFT OUTER JOIN</text>
                </svg>
+               <article className="prose prose-base">
+                  <pre className="block whitespace-pre-wrap overflow-x-scroll">
+                     SELECT <code className="text-green-400">left_table.*</code>, right_table.*
+                     <br />
+                     FROM <code className="text-green-400">left_table</code>
+                     <br />
+                     LEFT JOIN right_table ON <code className="text-green-400">left_table.key</code> = right_table.fkey;
+                  </pre>
 
-               <pre className="block whitespace-pre-wrap overflow-x-scroll">
-                  SELECT <code className="text-green-400">left_table.*</code>, right_table.*
-                  <br />
-                  FROM <code className="text-green-400">left_table</code>
-                  <br />
-                  LEFT JOIN right_table ON <code className="text-green-400">left_table.key</code> = right_table.fkey;
-               </pre>
+                  <ul>
+                     <li>A <code>LEFT JOIN</code> (or <code>LEFT OUTER JOIN</code>) is a type of <code>OUTER JOIN</code></li>
+                     <li>
+                        A <code>LEFT JOIN</code> returns <i>all rows</i> from the <code className="text-green-400">left_table</code> (the first table), along with any <i className="text-green-300">matching rows</i> from the <code>right_table</code> (the second table).
+                     </li>
+                     <li>
+                        If there is no matching row in the <code>right_table</code>, the result will include <code className="text-red-400">NULL</code> values for its columns.
+                     </li>
+                  </ul>
+               </article>
+            </div>
 
-               <ul>
-                  <li>A <code>LEFT JOIN</code> (or <code>LEFT OUTER JOIN</code>) is a type of <code>OUTER JOIN</code></li>
-                  <li>
-                     A <code>LEFT JOIN</code> returns <i>all rows</i> from the <code className="text-green-400">left_table</code> (the first table), along with any <i className="text-green-300">matching rows</i> from the <code>right_table</code> (the second table).
-                  </li>
-                  <li>
-                     If there is no matching row in the <code>right_table</code>, the result will include <code className="text-red-400">NULL</code> values for its columns.
-                  </li>
-               </ul>
+            <article className="prose prose-base">
 
-               <hr />
                <h2> Practice </h2>
                <p>
                   Consider this scenario:
                </p>
-                  <ul>
-                     <li>
-                        you have a <code>candidates</code> table for candidate data
-                        <table className="table table-zebra">
-                           <thead>
-                              <tr>
-                                 <th>id</th>
-                                 <th>name</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                              <tr>
-                                 <td>1</td>
-                                 <td>Alice Smith</td>
-                              </tr>
-                              <tr>
-                                 <td>2</td>
-                                 <td>Bob Johnson</td>
-                              </tr>
-                              <tr>
-                                 <td>3</td>
-                                 <td>Charlie Brown</td>
-                              </tr>
-                           </tbody>
-                        </table>
-                     </li>
-                     <li>
-                        you have a <code>resumes</code> table that stores the resumes of candidates
-                        <table className="table table-zebra">
-                           <thead>
-                              <tr>
-                                 <th>id</th>
-                                 <th>candidate_id</th>
-                                 <th>file_path</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                              <tr>
-                                 <td>1</td>
-                                 <td>1</td>
-                                 <td>alice_resume.pdf</td>
-                              </tr>
-                              <tr>
-                                 <td>2</td>
-                                 <td>2</td>
-                                 <td>bob_resume.pdf</td>
-                              </tr>
-                           </tbody>
-                        </table>
-                     </li>
-                     <li>the <code>resumes</code> are optional, so some <code>candidates</code> don't have one.</li>
-                     <li>
-                        you want a list of ALL candidates, alongside their resumes (if they have one), like so:
+               <ul>
+                  <li>
+                     you have a <code>candidates</code> table for candidate data
+                     <table className="table table-zebra">
+                        <thead>
+                           <tr>
+                              <th>id</th>
+                              <th>name</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td>1</td>
+                              <td>Alice Smith</td>
+                           </tr>
+                           <tr>
+                              <td>2</td>
+                              <td>Bob Johnson</td>
+                           </tr>
+                           <tr>
+                              <td>3</td>
+                              <td>Charlie Brown</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </li>
+                  <li>
+                     you have a <code>resumes</code> table that stores the resumes of candidates
+                     <table className="table table-zebra">
+                        <thead>
+                           <tr>
+                              <th>id</th>
+                              <th>candidate_id</th>
+                              <th>file_path</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td>1</td>
+                              <td>1</td>
+                              <td>alice_resume.pdf</td>
+                           </tr>
+                           <tr>
+                              <td>2</td>
+                              <td>2</td>
+                              <td>bob_resume.pdf</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </li>
+                  <li>the <code>resumes</code> are optional, so some <code>candidates</code> don't have one.</li>
+                  <li>
+                     you want a list of ALL candidates, alongside their resumes (if they have one), like so:
 
-                        <table className="table table-zebra">
-                           <thead>
-                              <tr>
-                                 <th>candidate_name</th>
-                                 <th>resume_file</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                              <tr>
-                                 <td>Alice Smith</td>
-                                 <td>alice_resume.pdf</td>
-                              </tr>
-                              <tr>
-                                 <td>Bob Johnson</td>
-                                 <td>bob_resume.pdf</td>
-                              </tr>
-                              <tr>
-                                 <td>Charlie Smith</td>
-                                 <td>NULL</td>
-                              </tr>
-                           </tbody>
-                        </table>
+                     <table className="table table-zebra">
+                        <thead>
+                           <tr>
+                              <th>candidate_name</th>
+                              <th>resume_file</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td>Alice Smith</td>
+                              <td>alice_resume.pdf</td>
+                           </tr>
+                           <tr>
+                              <td>Bob Johnson</td>
+                              <td>bob_resume.pdf</td>
+                           </tr>
+                           <tr>
+                              <td>Charlie Smith</td>
+                              <td>NULL</td>
+                           </tr>
+                        </tbody>
+                     </table>
 
-                     </li>
-                  </ul>
+                  </li>
+               </ul>
                <p>
                   The following SQL should accomplish the above:
                </p>
