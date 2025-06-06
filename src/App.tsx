@@ -8,6 +8,8 @@ type AppProps = ComponentProps<typeof SetupLesson> & ComponentProps<typeof Inner
   ComponentProps<typeof LeftJoinLesson> & ComponentProps<typeof FullJoinLesson>;
 
 function App({ execQuery, resetDbState }: AppProps) {
+  // TODO: separate DB conns per lesson instead of a single shared one, to avoid cross pollution
+
   return (
     <div className="flex items-center justify-center flex-col min-h-screen max-w-7xl p-5 mx-auto">
       <SetupLesson execQuery={execQuery} resetDbState={resetDbState} />
