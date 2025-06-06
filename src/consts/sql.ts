@@ -1,5 +1,7 @@
 
 export const INITIAL_MIGRATIONS_AND_SEEDS = `
+
+  -- Jobs board DB:
   CREATE TABLE IF NOT EXISTS employers (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
@@ -80,6 +82,41 @@ export const INITIAL_MIGRATIONS_AND_SEEDS = `
   INSERT INTO application_statuses (application_id, status_id, created_at) VALUES
     (1, 1, '2022-11-10 10:00:00'), -- Alice's Software Engineer application: Interview Scheduled
     (2, 1, '2022-11-10 10:00:00'); -- Bob's Software Engineer application: Interview Scheduled
+
+
+  -- Animal shelter DB:
+  CREATE TABLE IF NOT EXISTS people(
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL
+  );
+
+  CREATE TABLE IF NOT EXISTS animal_types(
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
+  );
+
+  CREATE TABLE IF NOT EXISTS animals (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    type_id INTEGER NOT NULL REFERENCES animal_types(id) ON DELETE CASCADE,
+    owner_id INTEGER REFERENCES people(id) ON DELETE CASCADE
+  );
+
+  INSERT INTO people (id, name, email) VALUES
+    (1, 'Dexter Morgan', 'dexter@morgan.com'),
+    (2, 'Walter White', 'walter@white.com'),
+    (3, 'Dr Jekyll', 'jekyll@hyde.com');
+
+  INSERT INTO animal_types (id, name) VALUES
+    (1, 'Cat'),
+    (2, 'Dog'),
+    (3, 'Bird');
+
+  INSERT INTO animals (id, name, type_id, owner_id) VALUES
+    (1, 'Garfield', 1, 1),
+    (2, 'Scooby', 2, 2),
+    (3, 'Tweety', 2, NULL);
 `;
 
 export const INNER_JOIN_QUERY =
@@ -105,4 +142,16 @@ export const RIGHT_JOIN_QUERY =
   resumes.file_path as resume_file
 FROM resumes
 RIGHT JOIN candidates ON resumes.candidate_id = candidates.id
+`;
+
+export const FULL_JOIN_QUERY =
+`SELECT
+  people.name as potential_owner,
+  animals.name as potential_pet
+FROM people
+FULL JOIN animals ON people.id = animals.owner_id
+WHERE                        -- only return results where:
+  people.name IS NULL        -- - an animal has no owner
+  OR animals.name IS NULL    -- - or a person has no pets
+ORDER BY potential_pet DESC;
 `;
