@@ -17,8 +17,8 @@ function App({ execQuery, resetDbState }: AppProps) {
       <LeftJoinLesson execQuery={execQuery} resetDbState={resetDbState} />
       <RightJoinLesson execQuery={execQuery} resetDbState={resetDbState} />
       <FullJoinLesson execQuery={execQuery} resetDbState={resetDbState} />
-      <LateralJoinLesson execQuery={execQuery} resetDbState={resetDbState} />
       <CrossJoinLesson execQuery={execQuery} resetDbState={resetDbState} />
+      <LateralJoinLesson execQuery={execQuery} resetDbState={resetDbState} />
     </div>
   )
 }
