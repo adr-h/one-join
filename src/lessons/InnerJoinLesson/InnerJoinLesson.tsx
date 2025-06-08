@@ -64,13 +64,13 @@ export function InnerJoinLesson({ execQuery, resetDbState }: InnerJoinLessonProp
                </article>
             </section>
 
-            <button className="btn btn-accent btn-xl w-full my-8" onClick={()=> document.getElementById('inner_join_practice')?.showModal()}>Click to practice</button>
+            <button className="btn btn-soft btn-accent btn-xl btn-wide my-8" onClick={()=> document.getElementById('inner_join_practice')?.showModal()}>Click to practice</button>
             <dialog id="inner_join_practice" className="modal">
                <div className="modal-box w-2xl max-w-full">
 
                   <div className="flex flex-row">
                      <div className="prose prose-base">
-                        <h2> INNER JOIN Practice </h2>
+                        <h2>INNER JOIN Practice </h2>
                      </div>
                      <form method="dialog" className="grow">
                         <button className="btn float-right">✕</button>
