@@ -21,7 +21,7 @@ export function RightJoinLesson({ execQuery, resetDbState }: RightJoinLessonProp
                   <span>You should use <b>LEFT JOIN</b> instead of <b>RIGHT JOIN</b> as much as possible, as it is more widely used and easier to understand.</span>
                </Warning>
             </div>
-            <div className="flex flex-column gap-8">
+            <section className="flex flex-column gap-8">
                <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
                   {/* <!-- White Background --> */}
                   <rect width="100%" height="100%" fill="white" />
@@ -63,7 +63,7 @@ export function RightJoinLesson({ execQuery, resetDbState }: RightJoinLessonProp
 
 
                </article>
-            </div>
+            </section>
 
             <article className="prose prose-base">
 

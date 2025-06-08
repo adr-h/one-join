@@ -15,7 +15,7 @@ export function FullJoinLesson({ execQuery, resetDbState }: FullJoinLessonProps)
             Full Join
          </h1>
          <div className="collapse-content text-sm gap-8">
-            <div className="flex flex-column gap-8">
+            <section className="flex flex-column gap-8">
                <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
                   {/* <!-- White background --> */}
                   <rect width="100%" height="100%" fill="white" />
@@ -51,8 +51,7 @@ export function FullJoinLesson({ execQuery, resetDbState }: FullJoinLessonProps)
                      </li>
                   </ul>
                </article>
-            </div>
-
+            </section>
 
             <article className="prose prose-base">
                <h2> Practice </h2>

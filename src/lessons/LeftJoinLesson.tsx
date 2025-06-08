@@ -15,7 +15,7 @@ export function LeftJoinLesson({ execQuery, resetDbState }: LeftJoinLessonProps)
             Left Join
          </h1>
          <div className="collapse-content text-sm gap-8">
-            <div className="flex flex-column gap-8">
+            <section className="flex flex-column gap-8">
                <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
                   {/* <!-- White Background --> */}
                   <rect width="100%" height="100%" fill="white" />
@@ -53,7 +53,7 @@ export function LeftJoinLesson({ execQuery, resetDbState }: LeftJoinLessonProps)
                      </li>
                   </ul>
                </article>
-            </div>
+            </section>
 
             <article className="prose prose-base">
 
