@@ -1,5 +1,11 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
+
+// use SWC (faster, but unstable on exotic platforms like Android)
+// import react from '@vitejs/plugin-react-swc';
+
+// use Babel (slower, but rock-solid)
+import react from '@vitejs/plugin-react';
+
 import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/

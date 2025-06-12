@@ -3,45 +3,50 @@ import { InnerJoinPractice } from "./InnerJoinPractice";
 
 type InnerJoinLessonProps = ComponentProps<typeof InnerJoinPractice>
 
+const modal_id = 'inner_join_practice';
+
 export function InnerJoinLesson({ execQuery, resetDbState }: InnerJoinLessonProps) {
 
    return (
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
-         <input type="checkbox" />
+         <input type="checkbox" defaultChecked={true} />
          <h1 className="collapse-title text-3xl font-bold underline">
             Inner Join
          </h1>
          <div className="collapse-content text-sm gap-8">
             <section className="flex flex-column gap-8">
-               <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-                  {/* <!-- White background --> */}
-                  <rect width="100%" height="100%" fill="white" />
+               <div>
+                  <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+                     {/* <!-- White background --> */}
+                     <rect width="100%" height="100%" fill="white" />
 
-                  {/* <!-- Left circle --> */}
-                  <circle cx="100" cy="100" r="60" fill="gray" fill-opacity="0.2" stroke="black" stroke-width="2" />
-                  <text x="60" y="100" font-size="14" text-anchor="middle" fill="black">A</text>
+                     {/* <!-- Left circle --> */}
+                     <circle cx="100" cy="100" r="60" fill="gray" fill-opacity="0.2" stroke="black" stroke-width="2" />
+                     <text x="60" y="100" font-size="14" text-anchor="middle" fill="black">A</text>
 
-                  {/* <!-- Right circle --> */}
-                  <circle cx="180" cy="100" r="60" fill="gray" fill-opacity="0.2" stroke="black" stroke-width="2" />
-                  <text x="220" y="100" font-size="14" text-anchor="middle" fill="black">B</text>
+                     {/* <!-- Right circle --> */}
+                     <circle cx="180" cy="100" r="60" fill="gray" fill-opacity="0.2" stroke="black" stroke-width="2" />
+                     <text x="220" y="100" font-size="14" text-anchor="middle" fill="black">B</text>
 
-                  {/* <!-- Intersection lens --> */}
-                  <path
-                     d="
-                           M 140 55.279
-                           A 60 60 0 0 1 140 144.721
-                           A 60 60 0 0 0 140 144.721
-                           A 60 60 0 0 1 140 55.279
-                           Z
-                        "
-                     fill="green"
-                     fill-opacity="0.4"
-                     stroke="none"
-                  />
+                     {/* <!-- Intersection lens --> */}
+                     <path
+                        d="
+                              M 140 55.279
+                              A 60 60 0 0 1 140 144.721
+                              A 60 60 0 0 0 140 144.721
+                              A 60 60 0 0 1 140 55.279
+                              Z
+                           "
+                        fill="green"
+                        fill-opacity="0.4"
+                        stroke="none"
+                     />
 
-                  {/* <!-- Annotation --> */}
-                  <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">INNER JOIN</text>
-               </svg>
+                     {/* <!-- Annotation --> */}
+                     <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">INNER JOIN</text>
+                  </svg>
+                  <button className="btn btn-accent btn-l w-full" onClick={()=> document.getElementById(modal_id)?.showModal()}>Click to Practice</button>
+               </div>
 
 
                <article className="prose prose-base">
@@ -61,11 +66,11 @@ export function InnerJoinLesson({ execQuery, resetDbState }: InnerJoinLessonProp
                         If a row in <code>table_a</code> does not have a corresponding match in <code>table_b</code> (and vice versa), it will be <b className="text-red-400">excluded</b> from the result.
                      </li>
                   </ul>
+
                </article>
             </section>
 
-            <button className="btn btn-soft btn-accent btn-xl btn-wide my-8" onClick={()=> document.getElementById('inner_join_practice')?.showModal()}>Click to practice</button>
-            <dialog id="inner_join_practice" className="modal">
+            <dialog id={modal_id} className="modal">
                <div className="modal-box w-2xl max-w-full">
 
                   <div className="flex flex-row">
@@ -88,7 +93,6 @@ export function InnerJoinLesson({ execQuery, resetDbState }: InnerJoinLessonProp
                   <button>close</button>
                </form>
             </dialog>
-
          </div>
       </div>
    )
