@@ -33,11 +33,11 @@ export function CrossJoinLesson({ execQuery, resetDbState } : CrossJoinLessonPro
                      <rect width="100%" height="100%" fill="white" />
 
                      {/* <!-- Left circle (left_table) --> */}
-                     <circle cx="90" cy="100" r="60" fill="#a0d8a0" fill-opacity="0.3" stroke="black" stroke-width="2" />
+                     <circle cx="90" cy="100" r="60" fill="green" fill-opacity="0.3" stroke="black" stroke-width="2" />
                      <text x="75" y="60" font-size="14" fill="black">Left</text>
 
                      {/* <!-- Right circle (right_table) --> */}
-                     <circle cx="210" cy="100" r="60" fill="#87cefa" fill-opacity="0.3" stroke="black" stroke-width="2" />
+                     <circle cx="210" cy="100" r="60" fill="green" fill-opacity="0.3" stroke="black" stroke-width="2" />
                      <text x="195" y="60" font-size="14" fill="black">Right</text>
 
                      {/* <!-- Left table rows --> */}
@@ -55,10 +55,10 @@ export function CrossJoinLesson({ execQuery, resetDbState } : CrossJoinLessonPro
                      <text x="190" y="119" font-size="14" fill="#1f3f5f">R2</text>
 
                      {/* <!-- Criss-cross lines --> */}
-                     <line x1="117" y1="84" x2="183" y2="84" stroke="#888" stroke-dasharray="3 2"/>
-                     <line x1="117" y1="84" x2="183" y2="114" stroke="#888" stroke-dasharray="3 2"/>
-                     <line x1="117" y1="114" x2="183" y2="84" stroke="#888" stroke-dasharray="3 2"/>
-                     <line x1="117" y1="114" x2="183" y2="114" stroke="#888" stroke-dasharray="3 2"/>
+                     <line x1="117" y1="84" x2="183" y2="84" stroke="black" stroke-dasharray="3 2"/>
+                     <line x1="117" y1="84" x2="183" y2="114" stroke="black" stroke-dasharray="3 2"/>
+                     <line x1="117" y1="114" x2="183" y2="84" stroke="black" stroke-dasharray="3 2"/>
+                     <line x1="117" y1="114" x2="183" y2="114" stroke="black" stroke-dasharray="3 2"/>
 
                      {/* <!-- Annotation --> */}
                      <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">CROSS JOIN</text>

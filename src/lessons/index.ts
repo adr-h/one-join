@@ -1,4 +1,4 @@
-export { SetupLesson } from "./SetupLesson";
+export { Intro } from "./Intro";
 export { InnerJoinLesson } from "./InnerJoinLesson";
 export { LeftJoinLesson } from "./LeftJoinLesson";
 export { RightJoinLesson } from './RightJoinLesson';
