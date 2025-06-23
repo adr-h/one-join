@@ -117,6 +117,36 @@ export const INITIAL_MIGRATIONS_AND_SEEDS = `
     (1, 'Garfield', 1, 1),
     (2, 'Scooby', 2, 2),
     (3, 'Tweety', 2, NULL);
+
+
+  -- Custom t-shirt DB:
+  CREATE TABLE graphic_designs (
+      id SERIAL PRIMARY KEY,
+      name TEXT NOT NULL
+  );
+
+  CREATE TABLE shirt_sizes (
+      id SERIAL PRIMARY KEY,
+      name TEXT NOT NULL
+  );
+
+  CREATE TABLE shirt_colours (
+      id SERIAL PRIMARY KEY,
+      name TEXT NOT NULL
+  );
+
+  INSERT INTO graphic_designs (id, name) VALUES
+    (1, 'Firey Poney'),
+    (2, 'Tranquil Seahorse');
+
+  INSERT INTO shirt_sizes (id, name) VALUES
+    (1, 'small'),
+    (2, 'medium'),
+    (3, 'large');
+
+  INSERT INTO shirt_colours (id, name) VALUES
+    (1, 'black'),
+    (2, 'white');
 `;
 
 export const INNER_JOIN_QUERY =
@@ -159,5 +189,12 @@ ORDER BY potential_pet ASC;
 `;
 
 export const CROSS_JOIN_QUERY =
-`
+`SELECT
+    graphic_designs.name as design,
+    shirt_sizes.name as size,
+    shirt_colours.name as colour
+FROM graphic_designs
+CROSS JOIN shirt_sizes
+CROSS JOIN shirt_colours
+ORDER BY graphic_designs.name;
 `;

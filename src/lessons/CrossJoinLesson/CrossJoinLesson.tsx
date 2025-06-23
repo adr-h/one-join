@@ -63,7 +63,7 @@ export function CrossJoinLesson({ execQuery, resetDbState } : CrossJoinLessonPro
                      {/* <!-- Annotation --> */}
                      <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">CROSS JOIN</text>
                   </svg>
-                  <button className="btn btn-accent btn-l w-full" onClick={()=> document.getElementById(modal_id)?.showModal()}>Click to Practice</button>
+                  <button className="btn btn-accent btn-l w-full" onClick={()=> (document.getElementById(modal_id) as HTMLDialogElement)?.showModal()}>Click to Practice</button>
                </div>
                <article className="prose prose-base">
 
@@ -98,7 +98,7 @@ export function CrossJoinLesson({ execQuery, resetDbState } : CrossJoinLessonPro
 
                   <div className="flex flex-row">
                      <div className="prose prose-base">
-                        <h2>RIGHT JOIN Practice </h2>
+                        <h2>CROSS JOIN Practice </h2>
                      </div>
                      <form method="dialog" className="grow">
                         <button className="btn float-right">✕</button>
