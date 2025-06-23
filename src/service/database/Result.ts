@@ -6,12 +6,12 @@ export type Result<T> = {
    }[];
 }
 
-const _testValidResult: Result<{ age: number, job: string }> = {
-   rows: [
-      { age: 40, job: 'product manager' }
-   ],
-   fields: [
-      { name: 'age' },
-      { name: 'job' }
-   ]
-}
+// const _testValidResult: Result<{ age: number, job: string }> = {
+//    rows: [
+//       { age: 40, job: 'product manager' }
+//    ],
+//    fields: [
+//       { name: 'age' },
+//       { name: 'job' }
+//    ]
+// }

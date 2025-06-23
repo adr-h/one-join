@@ -37,7 +37,7 @@ export function LeftJoinLesson({ execQuery, resetDbState }: LeftJoinLessonProps)
                      {/* <!-- Annotation --> */}
                      <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">LEFT OUTER JOIN</text>
                   </svg>
-                  <button className="btn btn-accent btn-l w-full" onClick={()=> document.getElementById(modal_id)?.showModal()}>Click to Practice</button>
+                  <button className="btn btn-accent btn-l w-full" onClick={()=> (document.getElementById(modal_id) as HTMLDialogElement)?.showModal()}>Click to Practice</button>
                </div>
 
                <article className="prose prose-base">

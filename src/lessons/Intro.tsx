@@ -22,7 +22,7 @@ export function Intro({ execQuery, resetDbState }: SetupLessonProps) {
                      A humble collection of notes on common SQL <code>JOIN</code>s
                   </li>
                   <li>
-                     The <button className="btn btn-accent btn-l mr-3" onClick={()=> document.getElementById(modal_id)?.showModal()}>Click to Practice</button>
+                     The <button className="btn btn-accent btn-l mr-3" onClick={()=> (document.getElementById(modal_id) as HTMLDialogElement)?.showModal()}>Click to Practice</button>
 
                       buttons allow you to practice by <b>running real queries</b> on a PG-based database
                   </li>

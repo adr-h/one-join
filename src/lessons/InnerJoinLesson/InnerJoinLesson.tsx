@@ -45,7 +45,7 @@ export function InnerJoinLesson({ execQuery, resetDbState }: InnerJoinLessonProp
                      {/* <!-- Annotation --> */}
                      <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">INNER JOIN</text>
                   </svg>
-                  <button className="btn btn-accent btn-l w-full" onClick={()=> document.getElementById(modal_id)?.showModal()}>Click to Practice</button>
+                  <button className="btn btn-accent btn-l w-full" onClick={()=> (document.getElementById(modal_id) as HTMLDialogElement)?.showModal()}>Click to Practice</button>
                </div>
 
 

@@ -1,6 +1,5 @@
 import type { ComponentProps } from "react";
 import { SqlRunner } from "../../components/SqlRunner";
-import { RIGHT_JOIN_QUERY } from "../../consts/sql";
 import { Warning } from "../../components/Warning";
 import { RightJoinPractice } from "./RightJoinPractice";
 
@@ -44,7 +43,7 @@ export function RightJoinLesson({ execQuery, resetDbState }: RightJoinLessonProp
                      {/* <!-- Annotation --> */}
                      <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">RIGHT OUTER JOIN</text>
                   </svg>
-                  <button className="btn btn-accent btn-l w-full" onClick={()=> document.getElementById(modal_id)?.showModal()}>Click to Practice</button>
+                  <button className="btn btn-accent btn-l w-full" onClick={()=> (document.getElementById(modal_id) as HTMLDialogElement)?.showModal()}>Click to Practice</button>
                </div>
 
                <article className="prose prose-base">
