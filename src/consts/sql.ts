@@ -155,10 +155,7 @@ export const FULL_JOIN_QUERY =
   animals.name as potential_pet
 FROM people
 FULL JOIN animals ON people.id = animals.owner_id
-WHERE                        -- only return results where:
-  people.name IS NULL        -- > an animal has no owner
-  OR animals.name IS NULL    -- > or a person has no pets
-ORDER BY potential_pet DESC;
+ORDER BY potential_pet ASC;
 `;
 
 export const CROSS_JOIN_QUERY =
