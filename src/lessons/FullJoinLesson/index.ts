@@ -1,0 +1,1 @@
+export { FullJoinLesson } from './FullJoinLesson';
