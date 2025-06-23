@@ -155,3 +155,7 @@ WHERE                        -- only return results where:
   OR animals.name IS NULL    -- > or a person has no pets
 ORDER BY potential_pet DESC;
 `;
+
+export const CROSS_JOIN_QUERY =
+`
+`;
