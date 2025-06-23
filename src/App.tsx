@@ -8,7 +8,7 @@ function App({ execQuery, resetDbState }: AppProps) {
   // TODO: separate DB conns per lesson instead of a single shared one, to avoid cross pollution
 
   return (
-    <div className="flex items-center justify-center flex-col min-h-screen max-w-7xl p-5 mx-auto">
+    <div className="flex items-center justify-center flex-col min-h-screen max-w-7xl p-5 mx-auto gap-6">
       <Intro execQuery={execQuery} resetDbState={resetDbState} />
       <InnerJoinLesson execQuery={execQuery} resetDbState={resetDbState} />
       <LeftJoinLesson execQuery={execQuery} resetDbState={resetDbState} />
