@@ -1,16 +1,19 @@
 import type { ComponentProps } from "react";
-import { SqlRunner } from "../components/SqlRunner";
-import { Warning } from "../components/Warning";
+import { SqlRunner } from "../../components/SqlRunner";
+import { Warning } from "../../components/Warning";
+import { CrossJoinPractice } from "./CrossJoinPractice";
 
 type CrossJoinLessonProps = Omit<
    ComponentProps<typeof SqlRunner>, 'initialValue'
 >
 
+const modal_id = 'cross_join_practice';
+
 export function CrossJoinLesson({ execQuery, resetDbState } : CrossJoinLessonProps) {
 
    return (
       <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
-         <input type="checkbox" />
+         <input type="checkbox" defaultChecked={true} />
          <h1 className="collapse-title text-3xl font-bold underline">
             Cross Join
          </h1>
@@ -60,6 +63,7 @@ export function CrossJoinLesson({ execQuery, resetDbState } : CrossJoinLessonPro
                      {/* <!-- Annotation --> */}
                      <text x="150" y="180" font-size="14" text-anchor="middle" fill="black">CROSS JOIN</text>
                   </svg>
+                  <button className="btn btn-accent btn-l w-full" onClick={()=> document.getElementById(modal_id)?.showModal()}>Click to Practice</button>
                </div>
                <article className="prose prose-base">
 
@@ -89,8 +93,29 @@ export function CrossJoinLesson({ execQuery, resetDbState } : CrossJoinLessonPro
             </section>
 
 
+            <dialog id={modal_id} className="modal">
+               <div className="modal-box w-2xl max-w-full">
 
-            <SqlRunner execQuery={execQuery} initialValue={''} resetDbState={resetDbState} />
+                  <div className="flex flex-row">
+                     <div className="prose prose-base">
+                        <h2>RIGHT JOIN Practice </h2>
+                     </div>
+                     <form method="dialog" className="grow">
+                        <button className="btn float-right">✕</button>
+                     </form>
+                  </div>
+
+                  <CrossJoinPractice execQuery={execQuery} resetDbState={resetDbState}/>
+                  <div className="modal-action">
+                     <form method="dialog">
+                        <button className="btn">Close</button>
+                     </form>
+                  </div>
+               </div>
+               <form method="dialog" className="modal-backdrop">
+                  <button>close</button>
+               </form>
+            </dialog>
          </div>
       </div>
    )
