@@ -17,7 +17,7 @@ export function FullJoinPractice({ execQuery, resetDbState }: FullJoinPracticePr
             <ul>
                <li>you run an animal shelter</li>
                <li>
-                  you have a <code>people</code> table for people in your neighbourhood
+                  you have a <code>people</code> table for people in your neighbourhood.
                   <table className="table table-zebra">
                      <thead>
                         <tr>
@@ -72,7 +72,7 @@ export function FullJoinPractice({ execQuery, resetDbState }: FullJoinPracticePr
                </li>
                <li>not all <code>animals</code> have an owner, and not all <code>people</code> have a pet.</li>
                <li>
-                  you want to run an adoption drive to help find animals in your neighbourhood a loving home by producing a list of BOTH unowned animals, AND people with no current pets.
+                  you have been tasked with producing a list of animals and people in your neighbourhood. This list should include people that own no pets, pets that have no owners, and owner-pet pairs, like so:
                   <table className="table table-zebra">
                      <thead>
                         <tr>
@@ -82,12 +82,20 @@ export function FullJoinPractice({ execQuery, resetDbState }: FullJoinPracticePr
                      </thead>
                      <tbody>
                         <tr>
-                           <td>Dr Jekyll</td>
-                           <td>NULL</td>
+                           <td>Dexter Morgan</td>
+                           <td>Garfield</td>
+                        </tr>
+                        <tr>
+                           <td>Walter White</td>
+                           <td>Scooby</td>
                         </tr>
                         <tr>
                            <td>NULL</td>
                            <td>Tweety</td>
+                        </tr>
+                        <tr>
+                           <td>Dr Jekyll</td>
+                           <td>NULL</td>
                         </tr>
                      </tbody>
                   </table>
