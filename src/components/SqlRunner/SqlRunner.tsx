@@ -89,8 +89,8 @@ export const SqlRunner = ({ resetDbState, execQuery, initialValue }: SqlRunnerPr
 	return(
 		<div className="w-full">
 			<div className="join">
-				<button className="btn btn-primary rounded-b-none join-item" onClick={execQueryHandler}> Execute Query </button>
-				<button className="btn btn-warning rounded-b-none join-item" onClick={execResetHandler}> Reset Database </button>
+				<button className="btn btn-primary rounded-b-none join-item" onClick={execQueryHandler}> Execute </button>
+				<button className="btn btn-warning rounded-b-none join-item" onClick={execResetHandler}> Reset </button>
 			</div>
 
 			{/* TODO: move the actual Monaco comp out of here into an Editor component */}

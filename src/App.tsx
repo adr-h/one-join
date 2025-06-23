@@ -1,9 +1,7 @@
 import { type ComponentProps } from 'react'
-import { FullJoinLesson, InnerJoinLesson, LeftJoinLesson, SetupLesson, RightJoinLesson, CrossJoinLesson } from './lessons';
-// import { LateralJoinLesson } from './lessons/LateralJoinLesson';
+import { FullJoinLesson, InnerJoinLesson, LeftJoinLesson, Intro, RightJoinLesson, CrossJoinLesson } from './lessons';
 
-
-type AppProps = ComponentProps<typeof SetupLesson> & ComponentProps<typeof InnerJoinLesson> &
+type AppProps = ComponentProps<typeof Intro> & ComponentProps<typeof InnerJoinLesson> &
   ComponentProps<typeof LeftJoinLesson> & ComponentProps<typeof FullJoinLesson>;
 
 function App({ execQuery, resetDbState }: AppProps) {
@@ -11,7 +9,7 @@ function App({ execQuery, resetDbState }: AppProps) {
 
   return (
     <div className="flex items-center justify-center flex-col min-h-screen max-w-7xl p-5 mx-auto">
-      <SetupLesson execQuery={execQuery} resetDbState={resetDbState} />
+      <Intro execQuery={execQuery} resetDbState={resetDbState} />
       <InnerJoinLesson execQuery={execQuery} resetDbState={resetDbState} />
       <LeftJoinLesson execQuery={execQuery} resetDbState={resetDbState} />
       <RightJoinLesson execQuery={execQuery} resetDbState={resetDbState} />

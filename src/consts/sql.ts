@@ -127,6 +127,11 @@ FROM jobs
 INNER JOIN employers ON jobs.employer_id = employers.id
 WHERE employers.name = 'Zeek Ltd';`;
 
+export const INTRO_QUERY =
+`SELECT
+ *
+FROM candidates
+`;
 
 export const LEFT_JOIN_QUERY =
 `SELECT
