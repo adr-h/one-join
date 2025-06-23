@@ -1,0 +1,1 @@
+export { RightJoinLesson } from './RightJoinLesson';
