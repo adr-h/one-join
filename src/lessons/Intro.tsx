@@ -24,7 +24,7 @@ export function Intro({ execQuery, resetDbState }: SetupLessonProps) {
                   <li>
                      The <button className="btn btn-accent btn-l mr-3" onClick={()=> document.getElementById(modal_id)?.showModal()}>Click to Practice</button>
 
-                      buttons allow you to <b>exec real queries</b> on a PG-based database
+                      buttons allow you to practice by <b>running real queries</b> on a PG-based database
                   </li>
                   <li>
                      Powered by <a href="https://pglite.dev/" target="_blank" >PgLite</a>
@@ -53,6 +53,7 @@ export function Intro({ execQuery, resetDbState }: SetupLessonProps) {
 
                      <article className="prose prose-base">
                         <ul>
+                           <li>Edit the query in the below editor (e.g: try changing <code>*</code> to <code>email</code> )</li>
                            <li>Click on the "Execute" button below to exec a <b>real</b> SQL query</li>
                            <li>Click on "Reset" button below to reset the DB state</li>
                            <li>All queries run against an in-browser instance of <a href="https://pglite.dev/" target="_blank" >PgLite</a></li>

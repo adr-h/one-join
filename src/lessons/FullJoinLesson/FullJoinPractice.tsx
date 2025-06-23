@@ -11,7 +11,6 @@ export function FullJoinPractice({ execQuery, resetDbState }: FullJoinPracticePr
    return (
       <>
          <article className="prose prose-base">
-            <h2> Practice </h2>
             <p>
                Consider this scenario:
             </p>
